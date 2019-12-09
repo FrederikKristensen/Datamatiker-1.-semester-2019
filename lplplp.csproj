@@ -122,6 +122,7 @@
     <Compile Include="Kort.xaml.cs">
       <DependentUpon>Kort.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\LogInControls.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
