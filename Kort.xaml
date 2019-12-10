@@ -5,9 +5,16 @@
     xmlns:local="using:lplplp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Custom1="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:Custom="using:Microsoft.Xaml.Interactivity"
+    xmlns:ViewModel="using:lplplp.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.DataContext>
+        <ViewModel:MainViewModelLogin/>
+    </Page.DataContext>
+    
     <Grid Background="#FF18182C">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -20,6 +27,12 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="1" Text="༼ つ ◕_◕ ༽つ TAKE MY ENERGY ༼ つ ◕_◕ ༽つ" TextWrapping="Wrap" VerticalAlignment="Center" FontFamily="Arial Black" FontSize="22" FontWeight="ExtraBold"/>
-
+        <Button Content="Tilbage" Grid.Column="1" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="30" Width="100" FontFamily="Arial Black" FontSize="16" BorderThickness="0.5">
+            <Custom:Interaction.Behaviors>
+                <Custom1:EventTriggerBehavior EventName="Click">
+                    <Custom1:NavigateToPageAction TargetPage="lplplp.MainPage"/>
+                </Custom1:EventTriggerBehavior>
+            </Custom:Interaction.Behaviors>
+        </Button>
     </Grid>
 </Page>

@@ -6,27 +6,32 @@ using System.Threading.Tasks;
 
 namespace lplplp.Models
 {
-    public class User
+    class User
     {
-        private int id;
-        private string userName;
-        private string passWord;
-
-        public int Id { get => id; set => id = value; }
-        public string UserName { get => userName; set => userName = value; }
-        public string PassWord { get => passWord; set => passWord = value; }
+        private string _userName;
+        private string _passWord;
 
         public User()
         {
         }
-        public User (string UserName, string PassWord)
+        public User (string Username, string Password)
         {
-            this.UserName = UserName;
-            this.PassWord = PassWord;
+            _userName = Username;
+            _passWord = Password;
+        }
+        public string Username
+        {
+            get { return _userName; }
+            set { _userName = value; }
+        }
+        public string Password
+        {
+            get { return _passWord; }
+            set { _passWord = value; }
         }
         public bool CheckInformation()
         {
-            if (!this.UserName.Equals("") && !this.PassWord.Equals(""))
+            if (!Username.Equals("") && !Password.Equals(""))
                 return true;
             else
                 return false;

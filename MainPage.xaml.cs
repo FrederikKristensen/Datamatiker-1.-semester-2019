@@ -48,13 +48,11 @@ namespace lplplp
                 Content = "Signed in successfully",
                 CloseButtonText = "Ok",
             };
-
             await dialogue.ShowAsync();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PopUpMethod();
         }
     }
 }
