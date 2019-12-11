@@ -33,29 +33,6 @@ namespace lplplp.Common
             get { return _users; }
             set { _users = value; }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged
-        ([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public User NyBruger
-        {
-            get { return _nyBruger; }
-        }
-
-        // Singleton
-        private static SharedKnowledgeClass _instance = new SharedKnowledgeClass();
-
-        public static SharedKnowledgeClass Instance
-        {
-            get { return _instance; }
-        }
-        // Slut Singleton
-
         public string UserNow
         {
             get { return _userNow; }
@@ -74,6 +51,27 @@ namespace lplplp.Common
                 OnPropertyChanged();
             }
         }
+        public User NyBruger
+        {
+            get { return _nyBruger; }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged
+        ([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        // Singleton
+        private static SharedKnowledgeClass _instance = new SharedKnowledgeClass();
+
+        public static SharedKnowledgeClass Instance
+        {
+            get { return _instance; }
+        }
+        // Slut Singleton
     }
 }
 

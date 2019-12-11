@@ -37,7 +37,26 @@ namespace lplplp.ViewModel
                 if (CheckList(obj.Username, Shared.UserNow) && (CheckList(obj.Password, Shared.PassNow)))
                 {
                     LoginSuccess = "lplplp.Kort";
+                    LoginPopUp();
                 }
+            }
+        }
+
+        private async void LoginPopUp()
+        {
+            try
+            {
+                ContentDialog dialogue = new ContentDialog()
+                {
+                    Title = "Log in",
+                    Content = "Signed in successfully",
+                    CloseButtonText = "Ok",
+                };
+                await dialogue.ShowAsync();
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
 
@@ -56,7 +75,6 @@ namespace lplplp.ViewModel
                 OnPropertyChanged();
             }
         }
-
         //public List<User> Users
         //{
         //    get { return _users; }

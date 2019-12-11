@@ -40,17 +40,6 @@ namespace lplplp
         //        DisplayAlert("Login", "Login Not Correct, empty username or password.", "derp");
         //    }
         //}
-        private async void PopUpMethod()
-        {
-            ContentDialog dialogue = new ContentDialog()
-            {
-                Title = "Log in",
-                Content = "Signed in successfully",
-                CloseButtonText = "Ok",
-            };
-            await dialogue.ShowAsync();
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
         }
