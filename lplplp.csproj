@@ -119,14 +119,17 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\NumberGenerator.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SharedKnowledgeClass.cs" />
     <Compile Include="Kort.xaml.cs">
       <DependentUpon>Kort.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Persistens\FilePersistency.cs" />
-    <Compile Include="Models\Persistens\IPersistency.cs" />
-    <Compile Include="Models\Persistens\SimplePersistency.cs" />
+    
+    <Compile Include="Vendespil.xaml.cs">
+      <DependentUpon>Vendespil.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\BrikCollection.cs" />
     <Compile Include="ViewModel\MainViewModelLogin.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -164,6 +167,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vendespil.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
