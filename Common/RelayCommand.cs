@@ -9,7 +9,7 @@ namespace lplplp.Common
 {
     class RelayCommand : ICommand
     {
-        private Action _action;
+        private readonly Action _action;
 
         public RelayCommand(Action action)
         {

@@ -1,5 +1,6 @@
 ﻿using lplplp.Common;
 using lplplp.Models;
+using lplplp.Models.Persistens;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,11 +15,16 @@ namespace lplplp.ViewModel
 {
     class MainViewModelLogin : INotifyPropertyChanged
     {
+        private IPersistency _persistens = new FilePersistency(); // Kobling til persistens
         //private User _nyBruger;
         private SharedKnowledgeClass _shared;
-        //private List<User> _users;
+        private List<User> _users;
         private RelayCommand _userLogin;
+        private RelayCommand _saveCommand;
+        private RelayCommand _loadCommand;
+
         private string _loginSuccess = "";
+
 
         public MainViewModelLogin()
         {
@@ -26,8 +32,10 @@ namespace lplplp.ViewModel
             _shared = SharedKnowledgeClass.Instance;
             //_nyBruger = new User(Username: "dummy", Password: "dummy");
 
-            //Users = new List<User>();
-            //_users.Add(new User(Username: "Rasmus", Password: "1234"));
+            Users = new List<User>();
+            _users.Add(new User(Username: "Rasmus", Password: "1234"));
+            _loadCommand = new RelayCommand(Load);
+            _saveCommand = new RelayCommand(Save);
         }
 
         private void CheckUserInfo()
@@ -41,7 +49,21 @@ namespace lplplp.ViewModel
                 }
             }
         }
+        private void Save()
+        {
+            _persistens.SaveUsers(_users);
+        }
+        private async void Load()
+        {
+            IList<User> users = await _persistens.LoadUsers();
 
+            _users.Clear();
+            foreach (User user in users)
+            {
+                _users.Add(user);
+            }
+
+        }
         private async void LoginPopUp()
         {
             try
@@ -75,11 +97,11 @@ namespace lplplp.ViewModel
                 OnPropertyChanged();
             }
         }
-        //public List<User> Users
-        //{
-        //    get { return _users; }
-        //    set { _users = value; }
-        //}
+        public List<User> Users
+        {
+            get { return _users; }
+            set { _users = value; }
+        }
         public SharedKnowledgeClass Shared
         {
             get { return _shared; }
@@ -90,11 +112,15 @@ namespace lplplp.ViewModel
         //}
 
 
+        public RelayCommand SaveCommand => _saveCommand;
+        public RelayCommand LoadCommand => _loadCommand;
+
         public RelayCommand UserLogin
         {
             get { return _userLogin; }
             set { _userLogin = value; }
         }
+       
 
 
         public event PropertyChangedEventHandler PropertyChanged;

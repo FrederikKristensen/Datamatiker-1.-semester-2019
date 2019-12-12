@@ -124,7 +124,9 @@
     <Compile Include="Kort.xaml.cs">
       <DependentUpon>Kort.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\LogInControls.cs" />
+    <Compile Include="Models\Persistens\FilePersistency.cs" />
+    <Compile Include="Models\Persistens\IPersistency.cs" />
+    <Compile Include="Models\Persistens\SimplePersistency.cs" />
     <Compile Include="ViewModel\MainViewModelLogin.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -179,7 +181,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\Persistens\" />
     <Folder Include="View\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
