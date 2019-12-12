@@ -119,13 +119,16 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\FilePersistency.cs" />
+    <Compile Include="Common\IPersistency.cs" />
     <Compile Include="Common\NumberGenerator.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SharedKnowledgeClass.cs" />
+    <Compile Include="Common\SimplePersistency.cs" />
     <Compile Include="Kort.xaml.cs">
       <DependentUpon>Kort.xaml</DependentUpon>
     </Compile>
-    
+    <Compile Include="Models\Brik.cs" />
     <Compile Include="Vendespil.xaml.cs">
       <DependentUpon>Vendespil.xaml</DependentUpon>
     </Compile>
@@ -143,6 +146,16 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\BrikBagside1.png" />
+    <Content Include="Assets\BrikForside1.png" />
+    <Content Include="Assets\BrikForside2.png" />
+    <Content Include="Assets\BrikForside3.png" />
+    <Content Include="Assets\BrikForside4.png" />
+    <Content Include="Assets\BrikForside5.png" />
+    <Content Include="Assets\Brikforside6.png" />
+    <Content Include="Assets\BrikForside7.png" />
+    <Content Include="Assets\BrikForside8.png" />
+    <Content Include="Assets\BrikForsideBlank.png" />
     <Content Include="Assets\fb.png" />
     <Content Include="Assets\insta.png" />
     <Content Include="Assets\rooostorv.jpg" />
