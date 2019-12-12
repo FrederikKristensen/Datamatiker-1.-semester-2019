@@ -127,6 +127,9 @@
     </Compile>
     <Compile Include="Models\Brik.cs" />
     <Compile Include="Models\LogInControls.cs" />
+    <Compile Include="Vendespil.xaml.cs">
+      <DependentUpon>Vendespil.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\BrikCollection.cs" />
     <Compile Include="ViewModel\MainViewModelLogin.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -165,6 +168,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vendespil.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
