@@ -1,0 +1,75 @@
+﻿<Page
+    x:Class="lplplp.View.KunstView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:lplplp.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Model="using:lplplp.ViewModel"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <Model:KunstværkerViewModel/>
+    </Page.DataContext>
+
+
+    <Grid Background="AntiqueWhite">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="8" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="4">
+            <Image Source="{Binding ValgtKunstværket.Billede, Mode=TwoWay}" Height="250"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="5" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="8" Background="White">
+            <TextBlock Text="{Binding ValgtKunstværket.Tittel}" FontSize="25"/>
+            <TextBlock Text="Kunstner:"/>
+            <TextBlock Text="{Binding ValgtKunstværket.Kunstner}"/>
+            <TextBlock Text="Om Kunstneren"/>
+            <TextBlock Text="{Binding ValgtKunstværket.OmKunstner}" TextWrapping="Wrap"/>
+            <TextBlock Text="Placering"/>
+            <TextBlock Text="{Binding ValgtKunstværket.Placering}"/>
+            <TextBlock Text="Beskrivelse"/>
+            <TextBlock Text="{Binding ValgtKunstværket.Beskrivelse}" TextWrapping="Wrap" />
+        </StackPanel>
+
+
+        <ListView ItemsSource="{Binding Kunstværkerne, Mode=TwoWay}" SelectedItem="{Binding ValgtKunstværket, Mode=TwoWay}" 
+                  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="8" ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                  Background="White">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding Billede}" Width="150" Height="150"/>
+                        <TextBlock Text="{Binding Tittel}" Margin="10,50"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+</Page>

@@ -52,7 +52,7 @@
                 <Button Content="Continue as guest" Width="300" Margin="0,0,0,0" Height="30" BorderThickness="0.5" FontFamily="arial black" FontSize="16" HorizontalAlignment="Center">
                     <Custom:Interaction.Behaviors>
                         <Custom1:EventTriggerBehavior EventName="Click">
-                            <Custom1:NavigateToPageAction TargetPage="lplplp.Vendespil"/>
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.View.KunstView"/>
                         </Custom1:EventTriggerBehavior>
                     </Custom:Interaction.Behaviors>
                 </Button>
