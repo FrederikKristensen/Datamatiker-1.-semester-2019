@@ -26,7 +26,9 @@ namespace lplplp.Models
 		public int HighScore
 		{
 			get { return _highScore; }
-			set { _highScore = value;
+			set
+			{
+				_highScore = value;
 			}
 		}
 
@@ -47,5 +49,6 @@ namespace lplplp.Models
 			else
 				return false;
 		}
+
 	}
 }

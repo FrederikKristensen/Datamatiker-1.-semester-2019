@@ -15,6 +15,7 @@ namespace lplplp.Common
     {
         private List<User> _users;
         private User _nyBruger;
+      private User userCurrent;   
 
         private string _userNow;
         private string _passNow;
@@ -28,10 +29,11 @@ namespace lplplp.Common
         public SharedKnowledgeClass()
         {
             _nyBruger = new User();
+         userCurrent = new User();
             {
                 Users = new List<User>();
                 _users.Add(new User(Username: "Rasmus", Password: "1234"));
-                _users.Add(new User(Username: "Michael", Password: "1234"));
+                _users.Add(new User(Username: "M", Password: "1"));
                 _users.Add(new User(Username: "Ask", Password: "1234"));
                 _users.Add(new User(Username: "Michelle", Password: "1234"));
                 _users.Add(new User(Username: "Frederik", Password: "1234"));
@@ -42,7 +44,7 @@ namespace lplplp.Common
             _saveCommand = new RelayCommand(Save);
             _addUserCommand = new RelayCommand(AddUser);
         }
-        private void Save()
+        public void Save()
         {
             _persistens.SaveUsers(_users);
         }
@@ -85,7 +87,12 @@ namespace lplplp.Common
                 OnPropertyChanged();
             }
         }
-        public User NyBruger
+      public User UserCurrent
+      {
+         get { return userCurrent; }
+         set { userCurrent = value; }
+      }
+      public User NyBruger
         {
             get { return _nyBruger; }
             set { _nyBruger = value; }
@@ -98,8 +105,10 @@ namespace lplplp.Common
             set { _addUserCommand = value; }
         }
 
-
-
+         public void UpdateHighScore (int newHighscore)
+      {
+         UserCurrent.HighScore = newHighscore;
+      }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

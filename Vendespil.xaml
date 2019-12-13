@@ -15,7 +15,7 @@
 
 	<Page.Resources>
 		<Style x:Key="TextBlockStyle1" TargetType="TextBlock">
-			<Setter Property="FontSize" Value="30"/>
+			<Setter Property="FontSize" Value="20"/>
 			<Setter Property="Margin" Value="5,5,5,5"/>
 		</Style>
 		<Style x:Key="TextBlockStyle2" TargetType="TextBlock">
@@ -39,20 +39,20 @@
 		<Grid Grid.Row="0"
 				Grid.Column="0">
 
-			<Grid.RowDefinitions>
+			<!--<Grid.RowDefinitions>
 				<RowDefinition Height="100" />
 				<RowDefinition Height="*" />
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="400" />
 				<ColumnDefinition Width="400" />
-			</Grid.ColumnDefinitions>
+			</Grid.ColumnDefinitions>-->
 
-			<StackPanel Orientation="Horizontal" HorizontalAlignment="left" Margin="110,10,10,10">
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="left" Margin="10,10,10,10">
 				<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="90" Text="Spiller:"/>
-				<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="300" Text="{Binding UserName}"/>
-				<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="120" Text="Score: "/>
-				<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="120" Text="{Binding UserScore}"/>
+				<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="300" Foreground="AntiqueWhite" Text="{Binding UserName}"/>
+				<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="120" Foreground="AntiqueWhite" Text="Score: "/>
+				<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="120" Foreground="AntiqueWhite" Text="{Binding UserScore}"/>
 			</StackPanel>
 		</Grid>
 

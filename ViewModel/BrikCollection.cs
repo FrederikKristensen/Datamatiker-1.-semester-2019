@@ -17,8 +17,10 @@ namespace lplplp.ViewModel
 	{
 		#region Instance fields
 		private int userScore = 0;
-		private string userName = "Julemanden";
+		//private string userName;
 		List<string> newImages = new List<string>();
+
+		private SharedKnowledgeClass shared;
 
 		private ObservableCollection<Brik> brikker;
 		private Brik _selectedBrik;
@@ -32,12 +34,12 @@ namespace lplplp.ViewModel
 		private RelayCommand _vendBrikCommand;
 		private RelayCommand _ikkeEnsBrikkerCommand;
 
-		private SharedKnowledgeClass sharedKnowledgeClass;
 		#endregion
 
 		#region Constructor
 		public BrikCollection()
 		{
+			shared = SharedKnowledgeClass.Instance;
 			brikker = new ObservableCollection<Brik>();
 			for (int i = 1; i < 17; i++)
 			{
@@ -57,7 +59,7 @@ namespace lplplp.ViewModel
 				newImages.RemoveAt(randomImageNumber - 1);
 			}
 			_selectedBrik = new Brik();
-			_vendBrikCommand = new RelayCommand(async () => await VendSelectedBrikAsync());
+			_vendBrikCommand = new RelayCommand(VendSelectedBrik);
 			_ikkeEnsBrikkerCommand = new RelayCommand(IkkeEnsBrikker);
 		}
 		#endregion
@@ -102,6 +104,7 @@ namespace lplplp.ViewModel
 				OnPropertyChanged();
 			}
 		}
+
 		public Brik SelectedBrik
 		{
 			get { return _selectedBrik; }
@@ -122,6 +125,11 @@ namespace lplplp.ViewModel
 			}
 		}
 
+		public string UserName
+		{
+			get { return Shared.UserCurrent.Username; }
+		}
+
 		public int UserScore
 		{
 			get { return userScore; }
@@ -131,58 +139,96 @@ namespace lplplp.ViewModel
 				OnPropertyChanged();
 			}
 		}
-		public string UserName
+
+		//public string UserName
+		//{
+		//	get { return userName; }
+		//	set
+		//	{
+		//		userName = value;
+		//		OnPropertyChanged();
+		//	}
+		//}
+
+		public SharedKnowledgeClass Shared
 		{
-			get { return userName; }
-			set
-			{
-				userName = value;
-				OnPropertyChanged();
-			}
+			get { return shared; }
 		}
 		#endregion
 
 		#region Methods
 
-		public async Task<int> IsBrikFaceDown()
-		{
-			if (SelectedBrik.IsFaceDown)
-			{
-				ChangeImage(SelectedBrik, SelectedBrik.ImageSourceForside);
-				return 1;
-			}
-			else
-			{
-				return 0;
-			}
-		}
+		//public bool IsBrikFaceDown()
+		//{
+		//	if (SelectedBrik.IsFaceDown)
+		//	{
+		//		return 1;
+		//	}
+		//	else
+		//	{
+		//		return 0;
+		//	}
+		//}
 
-		public async Task VendSelectedBrikAsync()
+		public void VendSelectedBrik()
 		{
-			if (SelectedBrik.IsFaceDown)
+			if (SelectedBrik.IsFaceDown & NumberOfBriksTurned == 0)
 			{
-				Task<int> briksTurned = IsBrikFaceDown();
-				NumberOfBriksTurned += await briksTurned;
+				Image1 = SelectedBrik;
+				NumberOfBriksTurned = NumberOfBriksTurned + 1;
 				SelectedBrik.IsFaceDown = false;
-				if (NumberOfBriksTurned == 1)
-				{
-					Image1 = SelectedBrik;
-				}
-				if (NumOfBriksTurned())
+				ChangeImage(SelectedBrik, SelectedBrik.ImageSourceForside);
+			} else
+			if (SelectedBrik.IsFaceDown && NumberOfBriksTurned == 1)
+			{
+				Image2 = SelectedBrik;
+				ChangeImage(SelectedBrik, SelectedBrik.ImageSourceForside);
+				NumberOfBriksTurned = NumberOfBriksTurned + 1;
+				SelectedBrik.IsFaceDown = false;
+
+			}
+			if (NumOfBriksTurned())
+			{
+				UserScore += 1;
+				if (IdentImages())
 				{
 					UserScore += 1;
-					Image2 = SelectedBrik;
-					if (IdentImages())
-					{
-						UserScore += 1;
-						Image1 = null;
-						Image2 = null;
-						NumberOfBriksTurned = 0;
-						totalBriksTurned += 1;
-						TestForEndGame();
-					}
+					NumberOfBriksTurned = 0;
+					totalBriksTurned += 1;
+					Image1 = new Brik();
+					Image2 = new Brik();
+					TestForEndGame();
+				} else if (!NumOfBriksTurned())
+				{
+					
 				}
 			}
+
+			//if (SelectedBrik.IsFaceDown)
+			//{
+			//	if (NumberOfBriksTurned <= 1)
+			//	{
+			//		Image1 = SelectedBrik;
+			//	}
+			//	ChangeImage(SelectedBrik, SelectedBrik.ImageSourceForside);
+			//	NumberOfBriksTurned += 1;
+			//	SelectedBrik.IsFaceDown = false;
+			//	if (NumOfBriksTurned())
+			//	{
+			//		UserScore += 1;
+			//		Image2 = SelectedBrik;
+			//		if (IdentImages())
+			//		{
+			//			UserScore += 1;
+			//			Image1 = new Brik();
+			//			Image2 = new Brik();
+			//			NumberOfBriksTurned = 0;
+			//			totalBriksTurned += 1;
+			//			IkkeEnsBrikker();
+			//			TestForEndGame();
+			//		}
+			//	}
+			//}
 		}
 
 		public bool NumOfBriksTurned()
@@ -190,7 +236,7 @@ namespace lplplp.ViewModel
 			return NumberOfBriksTurned >= 2 ? true : false;
 		}
 
-		public bool IdentImages() 
+		public bool IdentImages()
 		{
 			return Image1.ImageSourceForside.Equals(Image2.ImageSourceForside);
 		}
@@ -199,8 +245,8 @@ namespace lplplp.ViewModel
 		{
 			ChangeImage(Image1, Image1.ImageSourceBagside);
 			ChangeImage(Image2, Image2.ImageSourceBagside);
-			Image1 = null;
-			Image2 = null;
+			Image1 = new Brik();
+			Image2 = new Brik();
 			NumberOfBriksTurned = 0;
 		}
 
@@ -208,9 +254,12 @@ namespace lplplp.ViewModel
 		{
 			if (totalBriksTurned == 8)
 			{
+				Shared.UpdateHighScore(UserScore);
+				Shared.Save();
 				UserScore = 0;
 			}
 		}
+
 		public void ChangeImage(Brik brik, string newImage)
 		{
 			brik.ImageSourceCurrent = newImage;
