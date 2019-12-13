@@ -49,11 +49,7 @@
 			</Grid.ColumnDefinitions>
 
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="left" Margin="110,10,10,10">
-				<TextBlock Style="{StaticResource
-					
-					
-					
-					TextBlockStyle1}" Width ="90" Text="Spiller:"/>
+				<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="90" Text="Spiller:"/>
 				<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="300" Text="{Binding UserName}"/>
 				<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="120" Text="Score: "/>
 				<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="120" Text="{Binding UserScore}"/>
@@ -108,6 +104,7 @@
 					<TextBlock Text="image2.."></TextBlock>
 					<TextBlock Text="{Binding Image2.ImageSourceForside, Mode=TwoWay}"></TextBlock>
 				</StackPanel>
+				<StackPanel>
 				<Button x:Name="Vend"
 						  Height="80"
 						  Margin="5"
@@ -115,6 +112,14 @@
 						  Content="Vend brik"
 						  Command="{Binding VendBrik}">
 				</Button>
+					<Button x:Name="Næste"
+						  Height="80"
+						  Margin="5"
+						  FontSize="40"
+						  Content="Næste"
+						  Command="{Binding IkkeEnsBrikkerCommand}">
+					</Button>
+				</StackPanel>
 			</StackPanel>
 		</Grid>
 	</Grid>
