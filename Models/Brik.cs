@@ -22,7 +22,6 @@ namespace Vendespil_0._1
             _position = position;
             _imageSourceBagside = "Assets/BrikBagside1.png";
             _imageSourceCurrent = ImageSourceBagside;
-            //_imageSourceForside = "Assets\Brikforside8.png";
             _isFaceDown = true;
         }
 

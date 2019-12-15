@@ -158,82 +158,50 @@ namespace lplplp.ViewModel
 
 		#region Methods
 
-		//public bool IsBrikFaceDown()
-		//{
-		//	if (SelectedBrik.IsFaceDown)
-		//	{
-		//		return 1;
-		//	}
-		//	else
-		//	{
-		//		return 0;
-		//	}
-		//}
+		public void vendBrikken()
+		{
+			NumberOfBriksTurned = NumberOfBriksTurned + 1;
+			
+			ChangeImage(SelectedBrik, SelectedBrik.ImageSourceForside);
+		}
 
 		public void VendSelectedBrik()
 		{
-			if (SelectedBrik.IsFaceDown & NumberOfBriksTurned == 0)
+			if (SelectedBrik.IsFaceDown & NumOfBriksTurned(0))
 			{
 				Image1 = SelectedBrik;
-				NumberOfBriksTurned = NumberOfBriksTurned + 1;
-				SelectedBrik.IsFaceDown = false;
-				ChangeImage(SelectedBrik, SelectedBrik.ImageSourceForside);
-			} else
-			if (SelectedBrik.IsFaceDown && NumberOfBriksTurned == 1)
+				vendBrikken();
+				SelectedBrik = new Brik();
+			}
+			else
+			if (SelectedBrik.IsFaceDown && NumOfBriksTurned(1))
 			{
 				Image2 = SelectedBrik;
-				ChangeImage(SelectedBrik, SelectedBrik.ImageSourceForside);
-				NumberOfBriksTurned = NumberOfBriksTurned + 1;
-				SelectedBrik.IsFaceDown = false;
-
-			}
-			if (NumOfBriksTurned())
-			{
+				vendBrikken();
 				UserScore += 1;
+				
+				SelectedBrik = new Brik();
+			}
+			if (NumberOfBriksTurned == 2)
+			{
 				if (IdentImages())
 				{
-					UserScore += 1;
 					NumberOfBriksTurned = 0;
 					totalBriksTurned += 1;
 					Image1 = new Brik();
 					Image2 = new Brik();
-					TestForEndGame();
-				} else if (!NumOfBriksTurned())
-				{
 					
+					TestForEndGame();
+					SelectedBrik = new Brik();
 				}
 			}
 
-			//if (SelectedBrik.IsFaceDown)
-			//{
-			//	if (NumberOfBriksTurned <= 1)
-			//	{
-			//		Image1 = SelectedBrik;
-			//	}
-			//	ChangeImage(SelectedBrik, SelectedBrik.ImageSourceForside);
-			//	NumberOfBriksTurned += 1;
-			//	SelectedBrik.IsFaceDown = false;
-			//	if (NumOfBriksTurned())
-			//	{
-			//		UserScore += 1;
-			//		Image2 = SelectedBrik;
-			//		if (IdentImages())
-			//		{
-			//			UserScore += 1;
-			//			Image1 = new Brik();
-			//			Image2 = new Brik();
-			//			NumberOfBriksTurned = 0;
-			//			totalBriksTurned += 1;
-			//			IkkeEnsBrikker();
-			//			TestForEndGame();
-			//		}
-			//	}
-			//}
+			
 		}
 
-		public bool NumOfBriksTurned()
+		public bool NumOfBriksTurned(int num)
 		{
-			return NumberOfBriksTurned >= 2 ? true : false;
+			return NumberOfBriksTurned == num ? true : false;
 		}
 
 		public bool IdentImages()
@@ -243,11 +211,20 @@ namespace lplplp.ViewModel
 
 		public void IkkeEnsBrikker()
 		{
+			if (NumOfBriksTurned(2))
+			{
+				if (!IdentImages())
+				{
+
 			ChangeImage(Image1, Image1.ImageSourceBagside);
 			ChangeImage(Image2, Image2.ImageSourceBagside);
 			Image1 = new Brik();
 			Image2 = new Brik();
 			NumberOfBriksTurned = 0;
+			//Næste = false;
+				}
+			}
+			SelectedBrik = new Brik();
 		}
 
 		public void TestForEndGame()
@@ -263,8 +240,8 @@ namespace lplplp.ViewModel
 		public void ChangeImage(Brik brik, string newImage)
 		{
 			brik.ImageSourceCurrent = newImage;
-			brik.IsFaceDown = !SelectedBrik.IsFaceDown;
-			OnPropertyChanged();
+			brik.IsFaceDown = !brik.IsFaceDown;
+			//OnPropertyChanged();
 		}
 		#endregion
 

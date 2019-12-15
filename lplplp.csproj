@@ -162,6 +162,7 @@
     <Content Include="Assets\AnnaKvinden.jpg" />
     <Content Include="Assets\apotek.png" />
     <Content Include="Assets\Bash.png" />
+    <Content Include="Assets\betjentmedtekst.png" />
     <Content Include="Assets\Biografvæg.jpg" />
     <Content Include="Assets\Bolia.png" />
     <Content Include="Assets\Bonde.png" />
@@ -193,6 +194,7 @@
     <Content Include="Assets\Fotostater.jpg" />
     <Content Include="Assets\Frellsen.png" />
     <Content Include="Assets\Føtex.png" />
+    <Content Include="Assets\gamepad-solid.png" />
     <Content Include="Assets\gamestopplus.png" />
     <Content Include="Assets\Glitter.png" />
     <Content Include="Assets\Granitbænke.jpg" />
@@ -213,6 +215,8 @@
     <Content Include="Assets\Kino.png" />
     <Content Include="Assets\Krifa.png" />
     <Content Include="Assets\LaRustica.jpg" />
+    <Content Include="Assets\list-solid.png" />
+    <Content Include="Assets\map-marked-alt-solid.png" />
     <Content Include="Assets\Matas.png" />
     <Content Include="Assets\Message.png" />
     <Content Include="Assets\Mizar.jpg" />
@@ -224,8 +228,10 @@
     <Content Include="Assets\No8.jfif" />
     <Content Include="Assets\Normal.png" />
     <Content Include="Assets\Only.png" />
+    <Content Include="Assets\palette-solid.png" />
     <Content Include="Assets\Panduro.png" />
     <Content Include="Assets\PeaceOfCake.png" />
+    <Content Include="Assets\percent-solid.png" />
     <Content Include="Assets\PhonePower.png" />
     <Content Include="Assets\Pieces.png" />
     <Content Include="Assets\Pilgrim.png" />
