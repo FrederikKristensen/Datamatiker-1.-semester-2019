@@ -1,13 +1,16 @@
 ﻿using lplplp.Common;
 using lplplp.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace lplplp.ViewModel
@@ -35,6 +38,8 @@ namespace lplplp.ViewModel
             _users.Add(new User(Username: "Rasmus", Password: "1234"));
             _loadCommand = new RelayCommand(Load);
             _saveCommand = new RelayCommand(Save);
+
+            
         }
 
         private void CheckUserInfo()
@@ -43,21 +48,24 @@ namespace lplplp.ViewModel
             {
                 if (CheckList(obj.Username, Shared.UserNow) && (CheckList(obj.Password, Shared.PassNow)))
                 {
-                    LoginSuccess = "lplplp.Kort";
                     LoginPopUp();
+                    LoginSuccess = "lplplp.Vendespil";
+                    Frame preben = (Frame) Window.Current.Content;
+                    preben.Navigate(typeof(lplplp.Vendespil));
                 }
             }
         }
         private void Save()
         {
             _persistens.SaveUsers(_users);
+
         }
         private async void Load()
         {
-            IList<User> users = await _persistens.LoadUsers();
+            IList<User> _users = await _persistens.LoadUsers();
 
             _users.Clear();
-            foreach (User user in users)
+            foreach (User user in _users)
             {
                 _users.Add(user);
             }
@@ -67,13 +75,13 @@ namespace lplplp.ViewModel
         {
             try
             {
-                ContentDialog dialogue = new ContentDialog()
+                ContentDialog d1 = new ContentDialog()
                 {
                     Title = "Log in",
                     Content = "Signed in successfully",
                     CloseButtonText = "Ok",
                 };
-                await dialogue.ShowAsync();
+                await d1.ShowAsync();
             }
             catch (Exception)
             {
@@ -90,8 +98,8 @@ namespace lplplp.ViewModel
         public string LoginSuccess
         {
             get { return _loginSuccess; }
-            set 
-            { 
+            set
+            {
                 _loginSuccess = value;
                 OnPropertyChanged();
             }
@@ -119,7 +127,7 @@ namespace lplplp.ViewModel
             get { return _userLogin; }
             set { _userLogin = value; }
         }
-       
+
 
 
         public event PropertyChangedEventHandler PropertyChanged;
