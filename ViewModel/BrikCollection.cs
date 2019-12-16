@@ -17,53 +17,62 @@ namespace lplplp.ViewModel
 	{
 		#region Instance fields
 		private int userScore = 0;
-		private string userName = "Julemanden";
-
-		private ObservableCollection<Brik> brikker;
-		private Brik _selectedBrik;
 		private int _numberOfBriksTurned = 0;
 		private int totalBriksTurned = 0;
-		private RelayCommand _vendBrikCommand;
-		private NumberGenerator Ngenerator = new NumberGenerator();
+		private List<string> newImages = new List<string>();
+		private ObservableCollection<Brik> brikker;
+		private Brik _selectedBrik;
 		private Brik _image1 = null;
 		private Brik _image2 = null;
+		private SharedKnowledgeClass shared;
+		private NumberGenerator Ngenerator = new NumberGenerator();
 
-		List<string> newImages = new List<string>();
+		private RelayCommand _vendBrikCommand;
+		private RelayCommand _ikkeEnsBrikkerCommand;
+
 		#endregion
 
 		#region Constructor
 		public BrikCollection()
 		{
+			shared = SharedKnowledgeClass.Instance;
 			brikker = new ObservableCollection<Brik>();
-			for (int i = 1; i < 17; i++)
+			for (int i = 1; i < 17; i++) //lægger 16 brikker i observablecollection
 			{
 				brikker.Add(new Brik(i));
 			}
-			for (int i = 1; i < 3; i++)
+			for (int i = 1; i < 3; i++) //lægger 8 referencer til billeder i en List<string> newImages
 			{
 				for (int j = 1; j < 9; j++)
 				{
 					newImages.Add("Assets\\BrikForside" + j + ".png");
 				}
 			}
-			foreach (Brik brik in brikker)
+			foreach (Brik brik in brikker) //lægger et tilfældigt billede fra List<string> newImages i en Brik og sletter billedet fra List<string> newImages, Således at
+													//ObservableCollection<Brik> brikker har 8 par ens billeder.
 			{
 				int randomImageNumber = Ngenerator.Next(1, (17 - brik.Position));
 				brik.ImageSourceForside = newImages[randomImageNumber - 1];
 				newImages.RemoveAt(randomImageNumber - 1);
 			}
 			_selectedBrik = new Brik();
-			_vendBrikCommand = new RelayCommand(async () => await VendSelectedBrikAsync());
+			_vendBrikCommand = new RelayCommand(VendSelectedBrik); //Command til at vende en brik når man vælger den på listen og klikker "Vend Brik"
+			_ikkeEnsBrikkerCommand = new RelayCommand(IkkeEnsBrikker); //Command til at vende begge brikker hvis de ikke er ens.
 		}
 		#endregion
 
 		#region Properties
-
+		public RelayCommand IkkeEnsBrikkerCommand
+		{
+			get { return _ikkeEnsBrikkerCommand; }
+			set { _ikkeEnsBrikkerCommand = value; }
+		}
 		public RelayCommand VendBrik
 		{
 			get { return _vendBrikCommand; }
 			set { _vendBrikCommand = value; }
 		}
+
 		public ObservableCollection<Brik> Brikker
 		{
 			get { return brikker; }
@@ -92,6 +101,7 @@ namespace lplplp.ViewModel
 				OnPropertyChanged();
 			}
 		}
+
 		public Brik SelectedBrik
 		{
 			get { return _selectedBrik; }
@@ -110,7 +120,11 @@ namespace lplplp.ViewModel
 				_numberOfBriksTurned = value;
 				OnPropertyChanged();
 			}
+		}
 
+		public string UserName
+		{
+			get { return Shared.UserCurrent.Username; }
 		}
 
 		public int UserScore
@@ -122,84 +136,95 @@ namespace lplplp.ViewModel
 				OnPropertyChanged();
 			}
 		}
-		public string UserName
+
+		public SharedKnowledgeClass Shared
 		{
-			get { return userName; }
-			set
-			{
-				userName = value;
-				OnPropertyChanged();
-			}
+			get { return shared; }
 		}
 		#endregion
 
 		#region Methods
 
-		public async Task<int> IsBrikFaceDown()
+		public void vendBrikken()
 		{
-			if (SelectedBrik.IsFaceDown)
-			{
+			NumberOfBriksTurned = NumberOfBriksTurned + 1;
+			
+			ChangeImage(SelectedBrik, SelectedBrik.ImageSourceForside);
+		}
 
-				ChangeImage(SelectedBrik, SelectedBrik.ImageSourceForside);
-				return 1;
+		public void VendSelectedBrik()
+		{
+			if (SelectedBrik.IsFaceDown & NumOfBriksTurned(0))
+			{
+				Image1 = SelectedBrik;
+				vendBrikken();
+				SelectedBrik = new Brik();
 			}
 			else
+			if (SelectedBrik.IsFaceDown && NumOfBriksTurned(1))
 			{
-				return 0;
+				Image2 = SelectedBrik;
+				vendBrikken();
+				UserScore += 1;
+				
+				SelectedBrik = new Brik();
+			}
+			if (NumberOfBriksTurned == 2)
+			{
+				if (IdentImages())
+				{
+					NumberOfBriksTurned = 0;
+					totalBriksTurned += 1;
+					Image1 = new Brik();
+					Image2 = new Brik();
+					
+					TestForEndGame();
+					SelectedBrik = new Brik();
+				}
 			}
 		}
 
-		public async Task VendSelectedBrikAsync()
+		public bool NumOfBriksTurned(int num)
 		{
-			if (SelectedBrik.IsFaceDown)
+			return NumberOfBriksTurned == num ? true : false;
+		}
+
+		public bool IdentImages()
+		{
+			return Image1.ImageSourceForside.Equals(Image2.ImageSourceForside);
+		}
+
+		public void IkkeEnsBrikker()
+		{
+			if (NumOfBriksTurned(2))
 			{
-				Task<int> briksTurned = IsBrikFaceDown();
-				NumberOfBriksTurned += await briksTurned;
-				SelectedBrik.IsFaceDown = false;
-				if (NumberOfBriksTurned == 1)
+				if (!IdentImages())
 				{
-					Image1 = SelectedBrik;
-				}
-				if (NumberOfBriksTurned == 2)
-				{
-					UserScore += 1;
-					Image2 = SelectedBrik;
-					bool identicalImages = Image1.ImageSourceForside.Equals(Image2.ImageSourceForside);
-					if (identicalImages)
-					{
-						UserScore += 1;
-						Image1 = null;
-						Image2 = null;
-						NumberOfBriksTurned = 0;
-						totalBriksTurned += 1;
-						TestForEndGame();
-					}
-					else
-					{
-						//Thread.Sleep(2000);
-						ChangeImage(Image1, Image1.ImageSourceBagside);
-						ChangeImage(Image2, Image2.ImageSourceBagside);
-						Image1 = null;
-						Image2 = null;
-						NumberOfBriksTurned = 0;
-					}
+			ChangeImage(Image1, Image1.ImageSourceBagside);
+			ChangeImage(Image2, Image2.ImageSourceBagside);
+			Image1 = new Brik();
+			Image2 = new Brik();
+			NumberOfBriksTurned = 0;
+			//Næste = false;
 				}
 			}
+			SelectedBrik = new Brik();
 		}
 
 		public void TestForEndGame()
 		{
 			if (totalBriksTurned == 8)
 			{
+				Shared.UpdateHighScore(UserScore);
 				UserScore = 0;
 			}
-
 		}
+
 		public void ChangeImage(Brik brik, string newImage)
 		{
 			brik.ImageSourceCurrent = newImage;
-			brik.IsFaceDown = !SelectedBrik.IsFaceDown;
-			OnPropertyChanged();
+			brik.IsFaceDown = !brik.IsFaceDown;
+			//OnPropertyChanged();
 		}
 		#endregion
 

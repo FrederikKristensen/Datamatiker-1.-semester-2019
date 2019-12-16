@@ -6,6 +6,7 @@
 	 xmlns:Collection="using:lplplp.ViewModel"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:Custom="using:Microsoft.Xaml.Interactivity" xmlns:Custom1="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -27,48 +28,38 @@
 
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="150" />
+			<RowDefinition Height="80" />
 			<RowDefinition Height="*" />
+			<!--<RowDefinition Height="{Binding Shared.MenuHeight}"/>-->
+			<RowDefinition Height="80"/>
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*" />
 			<ColumnDefinition Width="200" />
-			<ColumnDefinition Width="200" />
+			<!--<ColumnDefinition Width="200" />-->
 		</Grid.ColumnDefinitions>
+
 
 		<Grid Grid.Row="0"
 				Grid.Column="0">
 
-			<Grid.RowDefinitions>
-				<RowDefinition Height="100" />
-				<RowDefinition Height="*" />
-			</Grid.RowDefinitions>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="400" />
-				<ColumnDefinition Width="400" />
-			</Grid.ColumnDefinitions>
-
-			<StackPanel Orientation="Horizontal" HorizontalAlignment="left" Margin="110,10,10,10">
-				<TextBlock Style="{StaticResource
-					
-					
-					
-					TextBlockStyle1}" Width ="90" Text="Spiller:"/>
-				<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="300" Text="{Binding UserName}"/>
-				<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="120" Text="Score: "/>
-				<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="120" Text="{Binding UserScore}"/>
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="left" Margin="10,10,10,10">
+				<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="90" Text="Spiller:"/>
+				<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="300" Foreground="AntiqueWhite" Text="{Binding UserName}"/>
+				<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="120" Foreground="AntiqueWhite" Text="Score: "/>
+				<TextBlock Style="{StaticResource TextBlockStyle1}" Width ="120" Foreground="AntiqueWhite" Text="{Binding UserScore}"/>
 			</StackPanel>
 		</Grid>
 
 		<Grid Grid.Row="1"
 				Grid.Column="0"
 				Margin="100,20">
-			<GridView ItemsSource="{Binding Brikker, Mode=TwoWay}"
+			<GridView
+				ItemsSource="{Binding Brikker, Mode=TwoWay}"
 						 ScrollViewer.VerticalScrollMode="Disabled"
 						 ScrollViewer.VerticalScrollBarVisibility="Disabled"
 						 SelectionMode="Single"
 						 SelectedItem="{Binding SelectedBrik, Mode=TwoWay}">
-				<!--IsItemClickEnabled="{Binding SelectedBrik.IsFaceDown, Mode=TwoWay}">-->
 				<GridView.ItemTemplate>
 					<DataTemplate>
 
@@ -93,11 +84,40 @@
 		<Grid Grid.Row="1"
 				Grid.Column="1">
 			<StackPanel VerticalAlignment="Center">
+				<Button x:Name="Vend"
+						  Height="80"
+						  Margin="5"
+						  FontSize="40"
+						  Content="Vend brik"
+						  Command="{Binding VendBrik}">
+				</Button>
+				<Button x:Name="Næste"
+						  Height="80"
+						  Margin="5"
+						  FontSize="40"
+						  Content="Næste"
+						  Command="{Binding IkkeEnsBrikkerCommand}">
+				</Button>
+			</StackPanel>
+
+
+
+		</Grid>
+
+
+		<!--<Grid Grid.Row="1"
+				Grid.Column="1">
+			<StackPanel VerticalAlignment="Center">
 				<Image Source="{Binding SelectedBrik.ImageSourceCurrent, Mode=TwoWay}">
 				</Image>
-				<TextBlock Text="{Binding SelectedBrik.Position}"></TextBlock>
-				<TextBlock Text="{Binding SelectedBrik.IsFaceDown}"></TextBlock>
-				<TextBlock Text="{Binding NumberOfBriksTurned}"></TextBlock>
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text="Face Down = " ></TextBlock>
+					<TextBlock Text="{Binding SelectedBrik.IsFaceDown}"></TextBlock>
+				</StackPanel>
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text="NumberofBriksTurned = "></TextBlock>
+					<TextBlock Text="{Binding NumberOfBriksTurned}"></TextBlock>
+				</StackPanel>
 				<StackPanel Orientation="Horizontal">
 					<TextBlock Text="image1.."></TextBlock>
 					<TextBlock Text="{Binding Image1.ImageSourceForside, Mode=TwoWay}"></TextBlock>
@@ -108,14 +128,96 @@
 					<TextBlock Text="image2.."></TextBlock>
 					<TextBlock Text="{Binding Image2.ImageSourceForside, Mode=TwoWay}"></TextBlock>
 				</StackPanel>
-				<Button x:Name="Vend"
+				<StackPanel>
+					<Button x:Name="Vend"
 						  Height="80"
 						  Margin="5"
 						  FontSize="40"
 						  Content="Vend brik"
 						  Command="{Binding VendBrik}">
-				</Button>
+					</Button>
+					<Button x:Name="Næste"
+						  Height="80"
+						  Margin="5"
+						  FontSize="40"
+						  Content="Næste"
+						  Command="{Binding IkkeEnsBrikkerCommand}">
+					</Button>
+				</StackPanel>
 			</StackPanel>
+		</Grid>-->
+		<Grid Grid.Row="2"
+				Grid.Column="0"
+				Grid.ColumnSpan="2">
+			<Grid.RowDefinitions>
+				<!--<RowDefinition Height="{Binding Shared.MenuHeight}"/>-->
+				<RowDefinition Height="80"/>
+				<!--<RowDefinition Height="3*"/>-->
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="250*"/>
+				<ColumnDefinition Width="250*"/>
+				<ColumnDefinition Width="250*"/>
+				<ColumnDefinition Width="250*"/>
+				<ColumnDefinition Width="250*"/>
+				<ColumnDefinition Width="250*"/>
+			</Grid.ColumnDefinitions>
+
+			<Button Foreground="Black" HorizontalAlignment="Center" Width="255" Grid.Row="0">
+					  <!--Grid.RowSpan="2"-->
+				<Image Source="../Assets/betjentmedtekst.png">
+					<Custom:Interaction.Behaviors>
+						<Custom1:EventTriggerBehavior EventName="PointerPressed">
+							<Custom1:NavigateToPageAction TargetPage=""/>
+						</Custom1:EventTriggerBehavior>
+					</Custom:Interaction.Behaviors>
+				</Image>
+			</Button>
+			<Button Foreground="Black" HorizontalAlignment="Center" Width="255" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
+				<Image Source="../Assets/palette-solid.png">
+					<Custom:Interaction.Behaviors>
+						<Custom1:EventTriggerBehavior EventName="PointerPressed">
+							<Custom1:NavigateToPageAction TargetPage="lplplp.View.KunstView"/>
+						</Custom1:EventTriggerBehavior>
+					</Custom:Interaction.Behaviors>
+				</Image>
+			</Button>
+			<Button Foreground="Black" HorizontalAlignment="Center" Width="255" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2">
+				<Image Source="../Assets/percent-solid.png">
+					<Custom:Interaction.Behaviors>
+						<Custom1:EventTriggerBehavior EventName="PointerPressed">
+							<Custom1:NavigateToPageAction TargetPage=""/>
+						</Custom1:EventTriggerBehavior>
+					</Custom:Interaction.Behaviors>
+				</Image>
+			</Button>
+			<Button Foreground="Black" HorizontalAlignment="Center" Width="255" Grid.Column="3" Grid.Row="0" Grid.RowSpan="2">
+				<Image Source="../Assets/map-marked-alt-solid.png">
+					<Custom:Interaction.Behaviors>
+						<Custom1:EventTriggerBehavior EventName="PointerPressed">
+							<Custom1:NavigateToPageAction TargetPage="lplplp.View.Kort"/>
+						</Custom1:EventTriggerBehavior>
+					</Custom:Interaction.Behaviors>
+				</Image>
+			</Button>
+			<Button Foreground="Black" HorizontalAlignment="Center" Width="255" Grid.Column="4" Grid.Row="0" Grid.RowSpan="2">
+				<Image Source="../Assets/list-solid.png">
+					<Custom:Interaction.Behaviors>
+						<Custom1:EventTriggerBehavior EventName="PointerPressed">
+							<Custom1:NavigateToPageAction TargetPage="lplplp.View.ButikkerView"/>
+						</Custom1:EventTriggerBehavior>
+					</Custom:Interaction.Behaviors>
+				</Image>
+			</Button>
+			<Button Foreground="Black" HorizontalAlignment="Center" Width="255" Grid.Column="5" Grid.Row="0" Grid.RowSpan="2">
+				<Image Source="../Assets/gamepad-solid.png">
+					<Custom:Interaction.Behaviors>
+						<Custom1:EventTriggerBehavior EventName="PointerPressed">
+							<Custom1:NavigateToPageAction TargetPage="lplplp.Vendespil"/>
+						</Custom1:EventTriggerBehavior>
+					</Custom:Interaction.Behaviors>
+				</Image>
+			</Button>
 		</Grid>
 	</Grid>
 </Page>

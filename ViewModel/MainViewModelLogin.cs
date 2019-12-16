@@ -15,31 +15,29 @@ using Windows.UI.Xaml.Controls;
 
 namespace lplplp.ViewModel
 {
-    class MainViewModelLogin : INotifyPropertyChanged
-    {
-        private IPersistency _persistens = new FilePersistency(); // Kobling til persistens
-        //private User _nyBruger;
-        private SharedKnowledgeClass _shared;
-        private List<User> _users;
-        private RelayCommand _userLogin;
-        private RelayCommand _saveCommand;
-        private RelayCommand _loadCommand;
+	class MainViewModelLogin : INotifyPropertyChanged
+	{
+		private IPersistency _persistens = new FilePersistency(); // Kobling til persistens
+																					 //private User _nyBruger;
+		private SharedKnowledgeClass _shared;
+		private List<User> _users;
+		private RelayCommand _userLogin;
+		private RelayCommand _saveCommand;
+		private RelayCommand _loadCommand;
 
-        private string _loginSuccess = "";
+		private string _loginSuccess = "";
 
 
-        public MainViewModelLogin()
-        {
-            _userLogin = new RelayCommand(CheckUserInfo);
-            _shared = SharedKnowledgeClass.Instance;
-            //_nyBruger = new User(Username: "dummy", Password: "dummy");
+		public MainViewModelLogin()
+		{
+			_userLogin = new RelayCommand(CheckUserInfo);
+			_shared = SharedKnowledgeClass.Instance;
+			//_nyBruger = new User(Username: "dummy", Password: "dummy");
 
             Users = new List<User>();
             _users.Add(new User(Username: "Rasmus", Password: "1234"));
             _loadCommand = new RelayCommand(Load);
             _saveCommand = new RelayCommand(Save);
-
-            
         }
 
         private void CheckUserInfo()
@@ -48,24 +46,21 @@ namespace lplplp.ViewModel
             {
                 if (CheckList(obj.Username, Shared.UserNow) && (CheckList(obj.Password, Shared.PassNow)))
                 {
+                    LoginSuccess = "lplplp.Kort";
                     LoginPopUp();
-                    LoginSuccess = "lplplp.Vendespil";
-                    Frame preben = (Frame) Window.Current.Content;
-                    preben.Navigate(typeof(lplplp.Vendespil));
                 }
             }
         }
         private void Save()
         {
             _persistens.SaveUsers(_users);
-
         }
         private async void Load()
         {
-            IList<User> _users = await _persistens.LoadUsers();
+            IList<User> users = await _persistens.LoadUsers();
 
             _users.Clear();
-            foreach (User user in _users)
+            foreach (User user in users)
             {
                 _users.Add(user);
             }
@@ -75,13 +70,13 @@ namespace lplplp.ViewModel
         {
             try
             {
-                ContentDialog d1 = new ContentDialog()
+                ContentDialog dialogue = new ContentDialog()
                 {
                     Title = "Log in",
                     Content = "Signed in successfully",
                     CloseButtonText = "Ok",
                 };
-                await d1.ShowAsync();
+                await dialogue.ShowAsync();
             }
             catch (Exception)
             {
@@ -89,17 +84,17 @@ namespace lplplp.ViewModel
             }
         }
 
-        private bool CheckList(string s1, string s2)
-        {
-            if (s1.Equals(s2)) { return true; }
-            return false;
-        }
+		private bool CheckList(string s1, string s2)
+		{
+			if (s1.Equals(s2)) { return true; }
+			return false;
+		}
 
         public string LoginSuccess
         {
             get { return _loginSuccess; }
-            set
-            {
+            set 
+            { 
                 _loginSuccess = value;
                 OnPropertyChanged();
             }
@@ -119,23 +114,23 @@ namespace lplplp.ViewModel
         //}
 
 
-        public RelayCommand SaveCommand => _saveCommand;
-        public RelayCommand LoadCommand => _loadCommand;
+		public RelayCommand SaveCommand => _saveCommand;
+		public RelayCommand LoadCommand => _loadCommand;
 
         public RelayCommand UserLogin
         {
             get { return _userLogin; }
             set { _userLogin = value; }
         }
+       
 
 
+		public event PropertyChangedEventHandler PropertyChanged;
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged
-                ([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-    }
+		protected virtual void OnPropertyChanged
+				  ([CallerMemberName] string propertyName = null)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
 }

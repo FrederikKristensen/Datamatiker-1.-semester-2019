@@ -1,0 +1,82 @@
+﻿<Page
+    x:Class="lplplp.View.ButikkerView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:lplplp.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ViewModel="using:lplplp.ViewModel"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <ViewModel:ButikkerViewModel/>
+    </Page.DataContext>
+
+
+
+    <Grid Background="BlanchedAlmond">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="3" Grid.RowSpan="8" Background="White">
+            <Image Source="{Binding ValgtButik.Logo}" Height="150" Width="150"/>
+            <TextBlock Text="Butikkens navn"/>
+            <TextBlock Text="{Binding ValgtButik.Navn}"/>
+            <TextBlock Text="Butik Nummer"/>
+            <TextBlock Text="{Binding ValgtButik.Nummer}"/>
+            <TextBlock Text="Åbningstider Hverdag"/>
+            <TextBlock Text="{Binding ValgtButik.ÅbningstiderH}"/>
+            <TextBlock Text="Åbningstider Weekend"/>
+            <TextBlock Text="{Binding ValgtButik.ÅbningstiderW, Mode=TwoWay}"/>
+            <TextBlock Text="Åbningstider Søndag"/>
+            <TextBlock Text="{Binding ValgtButik.ÅbningstiderS, Mode=TwoWay}"/>
+            <TextBlock Text="Telefon nummer"/>
+            <TextBlock Text="{Binding ValgtButik.Telefon, Mode=TwoWay}"/>
+            <TextBlock Text="website"/>
+            <TextBlock Text="{Binding ValgtButik.Website, Mode=TwoWay}"/>
+            <TextBlock Text="Facebook"/>
+            <TextBlock Text="{Binding ValgtButik.Facebook, Mode=TwoWay}"/>
+            <TextBlock Text="Instagram"/>
+            <TextBlock Text="{Binding ValgtButik.Instagram}"/>
+            <TextBlock Text="Youtube"/>
+            <TextBlock Text="{Binding ValgtButik.Youtube}"/>
+        </StackPanel>
+
+
+        <ListView Margin="0,100,50,0" Grid.ColumnSpan="3" Grid.RowSpan="9" Grid.Column="2" ItemsSource="{Binding Butikker}" SelectedItem="{Binding ValgtButik, Mode=TwoWay}" Background="White">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <Image Source="{Binding Logo}" Height="50" Width="100" Margin="0,0,20,0" />
+                        <TextBlock Text="{Binding Navn}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+    </Grid>
+</Page>
