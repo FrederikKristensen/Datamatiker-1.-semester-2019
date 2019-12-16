@@ -14,7 +14,8 @@ namespace lplplp.ViewModel
 {
    class HighscoreViewModel : INotifyPropertyChanged
    {
-      private ObservableCollection<Highscore> highscores;
+      private List<Highscore> highScores;
+      //private ObservableCollection<Highscore> highscores;
       private SharedKnowledgeClass shared;
       private int userScore = 0;
       private List<Highscore> sortedHighScores;
@@ -22,7 +23,8 @@ namespace lplplp.ViewModel
       public HighscoreViewModel()
       {
          shared = SharedKnowledgeClass.Instance;
-         highscores = new ObservableCollection<Highscore>();
+         highScores = new List<Highscore>();
+         //highscores = new ObservableCollection<Highscore>();
          sortedHighScores = new List<Highscore>();
          HentUsers();
 
@@ -40,36 +42,47 @@ namespace lplplp.ViewModel
 
       public void HentUsers()
       {
-         int rankCounter = 1;
          foreach (User user in Shared.Users)
          {
-            Highscores.Add(new Highscore(rankCounter, user.Username, user.HighScore));
-            rankCounter++;
-
+            HighScores.Add(new Highscore(1, user.Username, user.HighScore));
          }
-         Highscore tempHighScore = new Highscore(1000, "Dummy", 1000);
-         int j = Highscores.Count+1;
-         for (int i = 1; i < j; i++)
+         
+         HighScores.Sort((x, y) => x.Score.CompareTo(y.Score));
+         int rankCounter = 1;
+         foreach(Highscore user in HighScores)
          {
-            tempHighScore = new Highscore(1000, "Dummy", 1000);
-            foreach (Highscore obj in Highscores)
-            {
-               if (obj.Score < tempHighScore.Score)
-               {
-                  tempHighScore = obj;
-               }
-            }
-            SortedHighScores.Add(new Highscore(i, tempHighScore.Name, tempHighScore.Score));
-            Highscores.Remove(tempHighScore);
+            user.Rank = rankCounter;
+            rankCounter++;
          }
+
+         //List<Highscore> SortedHighScores = HighScores.OrderBy(o => o.Rank).ToList();
+
+         //Highscore tempHighScore = new Highscore(1000, "Dummy", 1000);
+         //int j = HighScores.Count+1;
+         //for (int i = 1; i < j; i++)
+         //{
+         //   tempHighScore = new Highscore(1000, "Dummy", 1000);
+         //   foreach (Highscore obj in HighScores)
+         //   {
+         //      if (obj.Score < tempHighScore.Score)
+         //      {
+         //         tempHighScore = obj;
+         //      }
+         //   }
+         //   SortedHighScores.Add(new Highscore(i, tempHighScore.Name, tempHighScore.Score));
+         //   HighScores.Remove(tempHighScore);
+         //}
 
       }
 
 
 
-      public ObservableCollection<Highscore> Highscores
+      //public ObservableCollection<Highscore> Highscores
+      public List<Highscore> HighScores
       {
-         get { return highscores; }
+         get { return highScores; }
+            set { highScores = value;
+            }
       }
 
       public SharedKnowledgeClass Shared

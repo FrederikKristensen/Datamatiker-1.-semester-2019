@@ -211,7 +211,7 @@
 			</Button>
 
 			<Button Style="{StaticResource ButtonStyle}" Grid.Column="7" Grid.Row="0">
-				<Image Source="../Assets/logout.png">
+				<Image Source="../Assets/HighScore.png">
 					<Custom:Interaction.Behaviors>
 						<Custom1:EventTriggerBehavior EventName="PointerPressed">
 							<Custom1:NavigateToPageAction TargetPage="lplplp.View.LocalHighscore"/>

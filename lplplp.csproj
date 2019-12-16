@@ -206,6 +206,7 @@
     <Content Include="Assets\HelgesKilde.jpg" />
     <Content Include="Assets\Helsemin.jfif" />
     <Content Include="Assets\Helsemin.png" />
+    <Content Include="Assets\HighScore.png" />
     <Content Include="Assets\HogM.png" />
     <Content Include="Assets\Home.jfif" />
     <Content Include="Assets\HotelChocolat.png" />
