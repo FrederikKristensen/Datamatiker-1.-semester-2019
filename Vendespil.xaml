@@ -14,31 +14,16 @@
 		<Collection:BrikCollection/>
 	</Page.DataContext>
 
-	<!--<Page.Resources>
-		<Style x:Key="TextBlockStyle1" TargetType="TextBlock">
-			<Setter Property="FontSize" Value="30"/>
-			<Setter Property="Margin" Value="5,5,5,5"/>
-		</Style>
-		<Style x:Key="TextBlockStyle2" TargetType="TextBlock">
-			<Setter Property="FontSize" Value="40"/>
-			<Setter Property="Width" Value="120"/>
-			<Setter Property="Margin" Value="5"/>
-		</Style>
-	</Page.Resources>-->
-
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="80" />
 			<RowDefinition Height="*" />
-			<!--<RowDefinition Height="{Binding Shared.MenuHeight}"/>-->
 			<RowDefinition Height="80"/>
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*" />
 			<ColumnDefinition Width="200" />
-			<!--<ColumnDefinition Width="200" />-->
 		</Grid.ColumnDefinitions>
-
 
 		<Grid Grid.Row="0"
 				Grid.Column="0">
@@ -62,7 +47,6 @@
 						 SelectedItem="{Binding SelectedBrik, Mode=TwoWay}">
 				<GridView.ItemTemplate>
 					<DataTemplate>
-
 						<StackPanel Height="200"
 										Width="200">
 							<Image Source="{Binding ImageSourceCurrent, Mode=TwoWay}"
@@ -99,9 +83,6 @@
 						  Command="{Binding IkkeEnsBrikkerCommand}">
 				</Button>
 			</StackPanel>
-
-
-
 		</Grid>
 
 
@@ -165,7 +146,7 @@
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
 
-			<Button Foreground="Black" HorizontalAlignment="Center" Width="255" Grid.Row="0">
+			<Button Style="{StaticResource ButtonStyle}" Grid.Row="0">
 				<Image Source="../Assets/betjentmedtekst.png">
 					<Custom:Interaction.Behaviors>
 						<Custom1:EventTriggerBehavior EventName="PointerPressed">
@@ -174,7 +155,7 @@
 					</Custom:Interaction.Behaviors>
 				</Image>
 			</Button>
-			<Button Style="{StaticResource ButStyle}" Grid.Column="1" Grid.Row="0">
+			<Button Style="{StaticResource ButtonStyle}" Grid.Column="1" Grid.Row="0">
 				<Image Source="../Assets/palette-solid.png">
 					<Custom:Interaction.Behaviors>
 						<Custom1:EventTriggerBehavior EventName="PointerPressed">
@@ -183,7 +164,7 @@
 					</Custom:Interaction.Behaviors>
 				</Image>
 			</Button>
-			<Button Style="{StaticResource ButStyle}" Grid.Column="2" Grid.Row="0">
+			<Button Style="{StaticResource ButtonStyle}" Grid.Column="2" Grid.Row="0">
 				<Image Source="../Assets/percent-solid.png">
 					<Custom:Interaction.Behaviors>
 						<Custom1:EventTriggerBehavior EventName="PointerPressed">
@@ -192,7 +173,7 @@
 					</Custom:Interaction.Behaviors>
 				</Image>
 			</Button>
-			<Button Style="{StaticResource ButStyle}" Grid.Column="3" Grid.Row="0">
+			<Button Style="{StaticResource ButtonStyle}" Grid.Column="3" Grid.Row="0">
 				<Image Source="../Assets/map-marked-alt-solid.png">
 					<Custom:Interaction.Behaviors>
 						<Custom1:EventTriggerBehavior EventName="PointerPressed">
@@ -201,7 +182,7 @@
 					</Custom:Interaction.Behaviors>
 				</Image>
 			</Button>
-			<Button Style="{StaticResource ButStyle}" Grid.Column="4" Grid.Row="0">
+			<Button Style="{StaticResource ButtonStyle}" Grid.Column="4" Grid.Row="0">
 				<Image Source="../Assets/list-solid.png">
 					<Custom:Interaction.Behaviors>
 						<Custom1:EventTriggerBehavior EventName="PointerPressed">
@@ -210,7 +191,7 @@
 					</Custom:Interaction.Behaviors>
 				</Image>
 			</Button>
-			<Button Style="{StaticResource ButStyle}" Grid.Column="5" Grid.Row="0">
+			<Button Style="{StaticResource ButtonStyle}" Grid.Column="5" Grid.Row="0">
 				<Image Source="../Assets/gamepad-solid.png">
 					<Custom:Interaction.Behaviors>
 						<Custom1:EventTriggerBehavior EventName="PointerPressed">
@@ -219,7 +200,7 @@
 					</Custom:Interaction.Behaviors>
 				</Image>
 			</Button>
-			<Button Style="{StaticResource ButStyle}" Grid.Column="6" Grid.Row="0">
+			<Button Style="{StaticResource ButtonStyle}" Grid.Column="6" Grid.Row="0">
 				<Image Source="../Assets/logout.png">
 					<Custom:Interaction.Behaviors>
 						<Custom1:EventTriggerBehavior EventName="PointerPressed">
@@ -228,8 +209,8 @@
 					</Custom:Interaction.Behaviors>
 				</Image>
 			</Button>
-			
-			<Button Style="{StaticResource ButStyle}" Grid.Column="7" Grid.Row="0">
+
+			<Button Style="{StaticResource ButtonStyle}" Grid.Column="7" Grid.Row="0">
 				<Image Source="../Assets/logout.png">
 					<Custom:Interaction.Behaviors>
 						<Custom1:EventTriggerBehavior EventName="PointerPressed">

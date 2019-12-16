@@ -16,11 +16,24 @@ namespace lplplp.Models
 		{
 		}
 
-		public User(string Username, string Password)
+		public User(string Username, string Password, int HighScore)
 		{
 			_userName = Username;
 			_passWord = Password;
-			_highScore = 1337;
+			_highScore = HighScore;
+		}
+
+
+		public string Username
+		{
+			get { return _userName; }
+			set { _userName = value; }
+		}
+
+		public string Password
+		{
+			get { return _passWord; }
+			set { _passWord = value; }
 		}
 
 		public int HighScore
@@ -32,16 +45,6 @@ namespace lplplp.Models
 			}
 		}
 
-		public string Username
-		{
-			get { return _userName; }
-			set { _userName = value; }
-		}
-		public string Password
-		{
-			get { return _passWord; }
-			set { _passWord = value; }
-		}
 		public bool CheckInformation()
 		{
 			if (!Username.Equals("") && !Password.Equals(""))

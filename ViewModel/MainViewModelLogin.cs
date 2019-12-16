@@ -34,7 +34,7 @@ namespace lplplp.ViewModel
 			_shared = SharedKnowledgeClass.Instance;
 
             Users = new List<User>();
-            _users.Add(new User(Username: "Rasmus", Password: "1234"));
+            _users.Add(new User(Username: "Rasmus", Password: "1234", 100));
             _loadCommand = new RelayCommand(Load);
             _saveCommand = new RelayCommand(Save);
         }
@@ -49,7 +49,7 @@ namespace lplplp.ViewModel
                     Shared.PassNow = "";
 
                     Frame login = (Frame)Window.Current.Content;
-                    login.Navigate(typeof(lplplp.Vendespil));
+                    login.Navigate(typeof(lplplp.View.LocalHighscore));
                     // LoginSuccess = "lplplp.Kort";
                     LoginPopUp();
                 }

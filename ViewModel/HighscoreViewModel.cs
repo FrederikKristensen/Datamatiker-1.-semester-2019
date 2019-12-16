@@ -21,8 +21,8 @@ namespace lplplp.ViewModel
 
       public HighscoreViewModel()
       {
-         highscores = new ObservableCollection<Highscore>();
          shared = SharedKnowledgeClass.Instance;
+         highscores = new ObservableCollection<Highscore>();
          sortedHighScores = new List<Highscore>();
          HentUsers();
 
@@ -32,29 +32,34 @@ namespace lplplp.ViewModel
 
       }
 
+      public List<Highscore> SortedHighScores
+      {
+         get { return sortedHighScores; }
+         set { sortedHighScores = value; }
+      }
+
       public void HentUsers()
       {
          int rankCounter = 1;
-         foreach (User preben in Shared.Users)
+         foreach (User user in Shared.Users)
          {
-            highscores.Add(new Highscore(rankCounter, preben.Username, preben.HighScore));
+            Highscores.Add(new Highscore(rankCounter, user.Username, user.HighScore));
             rankCounter++;
 
          }
          Highscore tempHighScore = new Highscore(1000, "Dummy", 1000);
-
-         for (int i = 0; i < Highscores.Count; i++)
+         int j = Highscores.Count+1;
+         for (int i = 1; i < j; i++)
          {
-
+            tempHighScore = new Highscore(1000, "Dummy", 1000);
             foreach (Highscore obj in Highscores)
             {
                if (obj.Score < tempHighScore.Score)
                {
                   tempHighScore = obj;
-
                }
             }
-            sortedHighScores.Add(tempHighScore);
+            SortedHighScores.Add(new Highscore(i, tempHighScore.Name, tempHighScore.Score));
             Highscores.Remove(tempHighScore);
          }
 
@@ -88,10 +93,11 @@ namespace lplplp.ViewModel
       }
 
 
-      public void NewHighscore() //Hurr durr indsæt
-      {
-         highscores.Add(new Highscore(0, Shared.UserCurrent.Username, Shared.UserCurrent.HighScore));
-      }
+
+      //public void NewHighscore() //Hurr durr indsæt
+      //{
+      //   highscores.Add(new Highscore(0, Shared.UserCurrent.Username, Shared.UserCurrent.HighScore));
+      //}
 
       public event PropertyChangedEventHandler PropertyChanged;
       protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

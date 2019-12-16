@@ -15,7 +15,7 @@ namespace lplplp.Common
         {
             if (_users.Count == 0)
             {
-                _users.Add(new User("Ragnar", "Lothbrok"));
+                _users.Add(new User("Ragnar", "Lothbrok", 100));
             }
 
             return _users;

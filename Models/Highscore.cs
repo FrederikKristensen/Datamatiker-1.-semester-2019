@@ -36,6 +36,7 @@ namespace lplplp.Models
       public int Rank
       {
          get { return _rank; }
+         set { _rank = value; }
       }
    }
 }
