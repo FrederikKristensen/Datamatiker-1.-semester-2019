@@ -130,12 +130,14 @@
     </Compile>
     <Compile Include="Models\Brik.cs" />
     <Compile Include="Models\Butik.cs" />
+    <Compile Include="Models\Highscore.cs" />
     <Compile Include="Models\Kunst.cs" />
     <Compile Include="Vendespil.xaml.cs">
       <DependentUpon>Vendespil.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\BrikCollection.cs" />
     <Compile Include="ViewModel\ButikkerViewModel.cs" />
+    <Compile Include="ViewModel\HighscoreViewModel.cs" />
     <Compile Include="ViewModel\KunstværkerViewModel.cs" />
     <Compile Include="ViewModel\MainViewModelLogin.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -151,6 +153,9 @@
     </Compile>
     <Compile Include="View\KunstView.xaml.cs">
       <DependentUpon>KunstView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LocalHighscore.xaml.cs">
+      <DependentUpon>LocalHighscore.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -216,6 +221,7 @@
     <Content Include="Assets\Krifa.png" />
     <Content Include="Assets\LaRustica.jpg" />
     <Content Include="Assets\list-solid.png" />
+    <Content Include="Assets\logout.png" />
     <Content Include="Assets\map-marked-alt-solid.png" />
     <Content Include="Assets\Matas.png" />
     <Content Include="Assets\Message.png" />
@@ -305,6 +311,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\KunstView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LocalHighscore.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
