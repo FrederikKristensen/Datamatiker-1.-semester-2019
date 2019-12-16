@@ -30,9 +30,11 @@ namespace lplplp.Common
 
 		public SharedKnowledgeClass()
 		{
+			
 			_nyBruger = new User();
 			userCurrent = new User();
 			{
+			
 				Users = new List<User>();
 				_users.Add(new User(Username: "Rasmus", Password: "1234"));
 				_users.Add(new User(Username: "M", Password: "1"));
@@ -45,10 +47,8 @@ namespace lplplp.Common
 			_loadCommand = new RelayCommand(Load);
 			_saveCommand = new RelayCommand(Save);
 			_addUserCommand = new RelayCommand(AddUser);
-
-
 	}
-
+	
 	public void Save()
 	{
 		_persistens.SaveUsers(_users);

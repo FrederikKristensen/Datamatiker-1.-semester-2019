@@ -18,7 +18,7 @@ namespace lplplp.ViewModel
 	class MainViewModelLogin : INotifyPropertyChanged
 	{
 		private IPersistency _persistens = new FilePersistency(); // Kobling til persistens
-																					 //private User _nyBruger;
+
 		private SharedKnowledgeClass _shared;
 		private List<User> _users;
 		private RelayCommand _userLogin;
@@ -27,28 +27,30 @@ namespace lplplp.ViewModel
 
 		private string _loginSuccess = "";
 
-
+        
 		public MainViewModelLogin()
 		{
 			_userLogin = new RelayCommand(CheckUserInfo);
 			_shared = SharedKnowledgeClass.Instance;
-			//_nyBruger = new User(Username: "dummy", Password: "dummy");
 
             Users = new List<User>();
             _users.Add(new User(Username: "Rasmus", Password: "1234"));
             _loadCommand = new RelayCommand(Load);
             _saveCommand = new RelayCommand(Save);
         }
-
         private void CheckUserInfo()
         {
             foreach (User obj in Shared.Users)
             {
                 if (CheckList(obj.Username, Shared.UserNow) && (CheckList(obj.Password, Shared.PassNow)))
                 {
-               Frame login = (Frame)Window.Current.Content;
-               login.Navigate(typeof(lplplp.Vendespil));
-                    //LoginSuccess = "lplplp.Kort";
+                    Shared.UserCurrent = obj;
+                    Shared.UserNow = "";
+                    Shared.PassNow = "";
+
+                    Frame login = (Frame)Window.Current.Content;
+                    login.Navigate(typeof(lplplp.Vendespil));
+                    // LoginSuccess = "lplplp.Kort";
                     LoginPopUp();
                 }
             }
@@ -85,13 +87,11 @@ namespace lplplp.ViewModel
                 throw;
             }
         }
-
 		private bool CheckList(string s1, string s2)
 		{
 			if (s1.Equals(s2)) { return true; }
 			return false;
 		}
-
         public string LoginSuccess
         {
             get { return _loginSuccess; }
@@ -114,7 +114,6 @@ namespace lplplp.ViewModel
         //{
         //    get { return _nyBruger; }
         //}
-
 
 		public RelayCommand SaveCommand => _saveCommand;
 		public RelayCommand LoadCommand => _loadCommand;
