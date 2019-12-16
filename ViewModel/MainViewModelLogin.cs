@@ -46,7 +46,9 @@ namespace lplplp.ViewModel
             {
                 if (CheckList(obj.Username, Shared.UserNow) && (CheckList(obj.Password, Shared.PassNow)))
                 {
-                    LoginSuccess = "lplplp.Kort";
+               Frame login = (Frame)Window.Current.Content;
+               login.Navigate(typeof(lplplp.Vendespil));
+                    //LoginSuccess = "lplplp.Kort";
                     LoginPopUp();
                 }
             }
