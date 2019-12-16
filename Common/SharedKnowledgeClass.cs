@@ -118,6 +118,7 @@ namespace lplplp.Common
 	public void UpdateHighScore(int newHighscore)
 	{
 		UserCurrent.HighScore = newHighscore;
+			Save();
 	}
 
 	public event PropertyChangedEventHandler PropertyChanged;

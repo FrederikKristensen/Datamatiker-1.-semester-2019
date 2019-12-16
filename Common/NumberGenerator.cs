@@ -16,7 +16,7 @@ namespace lplplp.Common
 			_generator = new Random();
 		}
 
-		// Returnerer en tilfældig værdi mellem tallene "Min" og Max" (begge inklusiv) 
+		// Returnerer en tilfældig værdi mellem tallene "Min" og Max" (begge inklusive) 
 
 		public int Next(int min, int max)
 		{

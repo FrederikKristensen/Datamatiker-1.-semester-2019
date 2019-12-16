@@ -25,11 +25,11 @@ namespace Vendespil_0._1
             _isFaceDown = true;
         }
 
-        public void DeleteImage()
-        {
-            ImageSourceForside = "Assets/BrikForsideBlank";
-            OnPropertyChanged();
-        }
+        //public void DeleteImage()
+        //{
+        //    ImageSourceForside = "Assets/BrikForsideBlank";
+        //    OnPropertyChanged();
+        //}
         public int Position
         {
             get { return _position; }

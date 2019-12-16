@@ -31,12 +31,12 @@
 			<RowDefinition Height="80" />
 			<RowDefinition Height="*" />
 			<!--<RowDefinition Height="{Binding Shared.MenuHeight}"/>-->
-			<RowDefinition Height="*"/>
+			<RowDefinition Height="80"/>
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*" />
 			<ColumnDefinition Width="200" />
-			<ColumnDefinition Width="200" />
+			<!--<ColumnDefinition Width="200" />-->
 		</Grid.ColumnDefinitions>
 
 
@@ -54,7 +54,8 @@
 		<Grid Grid.Row="1"
 				Grid.Column="0"
 				Margin="100,20">
-			<GridView ItemsSource="{Binding Brikker, Mode=TwoWay}"
+			<GridView
+				ItemsSource="{Binding Brikker, Mode=TwoWay}"
 						 ScrollViewer.VerticalScrollMode="Disabled"
 						 ScrollViewer.VerticalScrollBarVisibility="Disabled"
 						 SelectionMode="Single"
@@ -81,6 +82,30 @@
 			</GridView>
 		</Grid>
 		<Grid Grid.Row="1"
+				Grid.Column="1">
+			<StackPanel VerticalAlignment="Center">
+				<Button x:Name="Vend"
+						  Height="80"
+						  Margin="5"
+						  FontSize="40"
+						  Content="Vend brik"
+						  Command="{Binding VendBrik}">
+				</Button>
+				<Button x:Name="Næste"
+						  Height="80"
+						  Margin="5"
+						  FontSize="40"
+						  Content="Næste"
+						  Command="{Binding IkkeEnsBrikkerCommand}">
+				</Button>
+			</StackPanel>
+
+
+
+		</Grid>
+
+
+		<!--<Grid Grid.Row="1"
 				Grid.Column="1">
 			<StackPanel VerticalAlignment="Center">
 				<Image Source="{Binding SelectedBrik.ImageSourceCurrent, Mode=TwoWay}">
@@ -120,11 +145,13 @@
 					</Button>
 				</StackPanel>
 			</StackPanel>
-		</Grid>
+		</Grid>-->
 		<Grid Grid.Row="2"
-				Grid.Column="0">
+				Grid.Column="0"
+				Grid.ColumnSpan="2">
 			<Grid.RowDefinitions>
-				<RowDefinition Height="{Binding Shared.MenuHeight}"/>
+				<!--<RowDefinition Height="{Binding Shared.MenuHeight}"/>-->
+				<RowDefinition Height="80"/>
 				<!--<RowDefinition Height="3*"/>-->
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>

@@ -17,19 +17,15 @@ namespace lplplp.ViewModel
 	{
 		#region Instance fields
 		private int userScore = 0;
-		//private string userName;
-		List<string> newImages = new List<string>();
-
-		private SharedKnowledgeClass shared;
-
-		private ObservableCollection<Brik> brikker;
-		private Brik _selectedBrik;
 		private int _numberOfBriksTurned = 0;
 		private int totalBriksTurned = 0;
-
-		private NumberGenerator Ngenerator = new NumberGenerator();
+		private List<string> newImages = new List<string>();
+		private ObservableCollection<Brik> brikker;
+		private Brik _selectedBrik;
 		private Brik _image1 = null;
 		private Brik _image2 = null;
+		private SharedKnowledgeClass shared;
+		private NumberGenerator Ngenerator = new NumberGenerator();
 
 		private RelayCommand _vendBrikCommand;
 		private RelayCommand _ikkeEnsBrikkerCommand;
@@ -141,16 +137,6 @@ namespace lplplp.ViewModel
 			}
 		}
 
-		//public string UserName
-		//{
-		//	get { return userName; }
-		//	set
-		//	{
-		//		userName = value;
-		//		OnPropertyChanged();
-		//	}
-		//}
-
 		public SharedKnowledgeClass Shared
 		{
 			get { return shared; }
@@ -214,7 +200,6 @@ namespace lplplp.ViewModel
 			{
 				if (!IdentImages())
 				{
-
 			ChangeImage(Image1, Image1.ImageSourceBagside);
 			ChangeImage(Image2, Image2.ImageSourceBagside);
 			Image1 = new Brik();
@@ -231,7 +216,6 @@ namespace lplplp.ViewModel
 			if (totalBriksTurned == 8)
 			{
 				Shared.UpdateHighScore(UserScore);
-				Shared.Save();
 				UserScore = 0;
 			}
 		}
