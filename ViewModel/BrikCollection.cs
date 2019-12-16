@@ -41,26 +41,27 @@ namespace lplplp.ViewModel
 		{
 			shared = SharedKnowledgeClass.Instance;
 			brikker = new ObservableCollection<Brik>();
-			for (int i = 1; i < 17; i++)
+			for (int i = 1; i < 17; i++) //lægger 16 brikker i observablecollection
 			{
 				brikker.Add(new Brik(i));
 			}
-			for (int i = 1; i < 3; i++)
+			for (int i = 1; i < 3; i++) //lægger 8 referencer til billeder i en List<string> newImages
 			{
 				for (int j = 1; j < 9; j++)
 				{
 					newImages.Add("Assets\\BrikForside" + j + ".png");
 				}
 			}
-			foreach (Brik brik in brikker)
+			foreach (Brik brik in brikker) //lægger et tilfældigt billede fra List<string> newImages i en Brik og sletter billedet fra List<string> newImages, Således at
+													//ObservableCollection<Brik> brikker har 8 par ens billeder.
 			{
 				int randomImageNumber = Ngenerator.Next(1, (17 - brik.Position));
 				brik.ImageSourceForside = newImages[randomImageNumber - 1];
 				newImages.RemoveAt(randomImageNumber - 1);
 			}
 			_selectedBrik = new Brik();
-			_vendBrikCommand = new RelayCommand(VendSelectedBrik);
-			_ikkeEnsBrikkerCommand = new RelayCommand(IkkeEnsBrikker);
+			_vendBrikCommand = new RelayCommand(VendSelectedBrik); //Command til at vende en brik når man vælger den på listen og klikker "Vend Brik"
+			_ikkeEnsBrikkerCommand = new RelayCommand(IkkeEnsBrikker); //Command til at vende begge brikker hvis de ikke er ens.
 		}
 		#endregion
 
@@ -195,8 +196,6 @@ namespace lplplp.ViewModel
 					SelectedBrik = new Brik();
 				}
 			}
-
-			
 		}
 
 		public bool NumOfBriksTurned(int num)

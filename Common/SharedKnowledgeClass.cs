@@ -26,7 +26,7 @@ namespace lplplp.Common
 		private RelayCommand _saveCommand;
 		private RelayCommand _loadCommand;
 			
-		private int menuHeight = 40;
+		private int menuHeight = 80;
 
 		public SharedKnowledgeClass()
 		{

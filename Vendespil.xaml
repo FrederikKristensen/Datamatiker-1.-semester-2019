@@ -31,7 +31,7 @@
 			<RowDefinition Height="80" />
 			<RowDefinition Height="*" />
 			<!--<RowDefinition Height="{Binding Shared.MenuHeight}"/>-->
-			<RowDefinition Height="80"/>
+			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*" />
@@ -124,7 +124,7 @@
 		<Grid Grid.Row="2"
 				Grid.Column="0">
 			<Grid.RowDefinitions>
-				<RowDefinition Height="40*"/>
+				<RowDefinition Height="{Binding Shared.MenuHeight}"/>
 				<!--<RowDefinition Height="3*"/>-->
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
@@ -150,7 +150,7 @@
 				<Image Source="../Assets/palette-solid.png">
 					<Custom:Interaction.Behaviors>
 						<Custom1:EventTriggerBehavior EventName="PointerPressed">
-							<Custom1:NavigateToPageAction TargetPage="menu.KunstView"/>
+							<Custom1:NavigateToPageAction TargetPage="lplplp.View.KunstView"/>
 						</Custom1:EventTriggerBehavior>
 					</Custom:Interaction.Behaviors>
 				</Image>
