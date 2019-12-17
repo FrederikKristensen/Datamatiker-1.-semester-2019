@@ -24,7 +24,7 @@ namespace lplplp.View
 	{
 		public LocalHighscore()
 		{
-			this.InitializeComponent();
+			InitializeComponent();
 		}
 	}
 }

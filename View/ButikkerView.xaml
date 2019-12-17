@@ -26,7 +26,7 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -42,7 +42,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="3" Grid.RowSpan="8" Background="#696969">
+        <StackPanel Margin="0,100,50,0" Grid.Column="5" Grid.ColumnSpan="3" Grid.RowSpan="7" Background="#696969">
             <Image Source="{Binding ValgtButik.Logo}" Height="150" Width="150"/>
             <TextBlock Text="Butikkens navn"/>
             <TextBlock Text="{Binding ValgtButik.Navn}"/>
@@ -67,9 +67,9 @@
         </StackPanel>
 
 
-        <ListView Margin="0,100,50,0" Grid.ColumnSpan="3" Grid.RowSpan="9" 
+        <ListView Margin="0,100,50,0" Grid.ColumnSpan="3" Grid.RowSpan="8" 
                   Grid.Column="2" ItemsSource="{Binding Butikker}" SelectedItem="{Binding ValgtButik, Mode=TwoWay}" 
-                  Background="#696969">
+                  Background="#696969" SelectionChanged="ListView_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" Margin="0,5">

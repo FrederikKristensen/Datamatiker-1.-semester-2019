@@ -40,7 +40,7 @@
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
-            <RowDefinition Height="100*"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
@@ -48,7 +48,7 @@
             <Image Source="{Binding ValgtKunstværket.Billede, Mode=TwoWay}" Height="250"/>
         </StackPanel>
 
-        <StackPanel Background="#696969" Grid.Column="5" Grid.ColumnSpan="4" Grid.Row="1" Grid.RowSpan="9" Margin="0,0,135,0">
+        <StackPanel Background="#696969" Grid.Column="5" Grid.ColumnSpan="4" Grid.Row="1" Grid.RowSpan="8" Margin="0,0,135,0">
             <TextBlock Text="{Binding ValgtKunstværket.Tittel}" FontSize="25"/>
             <TextBlock Text="Kunstner:"/>
             <TextBlock Text="{Binding ValgtKunstværket.Kunstner}"/>
@@ -62,7 +62,7 @@
 
 
         <ListView ItemsSource="{Binding Kunstværkerne, Mode=TwoWay}" SelectedItem="{Binding ValgtKunstværket, Mode=TwoWay}" 
-                  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="9" ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="8" ScrollViewer.VerticalScrollBarVisibility="Visible" 
                   Background="#696969" Margin="0,0,137,0">
             <ListView.ItemTemplate>
                 <DataTemplate>
