@@ -6,6 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Model="using:lplplp.ViewModel"
+    xmlns:Custom="using:Microsoft.Xaml.Interactivity"
+    xmlns:Custom1="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d"
     Background= "#696969">
 
@@ -29,23 +31,24 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="97*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="8" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="4">
+        <StackPanel Grid.Column="7" Grid.ColumnSpan="4" Grid.Row="3" Grid.RowSpan="5" Margin="137,0,0,0">
             <Image Source="{Binding ValgtKunstværket.Billede, Mode=TwoWay}" Height="250"/>
         </StackPanel>
 
-        <StackPanel Background="#696969" Grid.Column="5" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="8">
+        <StackPanel Background="#696969" Grid.Column="5" Grid.ColumnSpan="4" Grid.Row="1" Grid.RowSpan="9" Margin="0,0,135,0">
             <TextBlock Text="{Binding ValgtKunstværket.Tittel}" FontSize="25"/>
             <TextBlock Text="Kunstner:"/>
             <TextBlock Text="{Binding ValgtKunstværket.Kunstner}"/>
@@ -59,8 +62,8 @@
 
 
         <ListView ItemsSource="{Binding Kunstværkerne, Mode=TwoWay}" SelectedItem="{Binding ValgtKunstværket, Mode=TwoWay}" 
-                  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="8" ScrollViewer.VerticalScrollBarVisibility="Visible" 
-                  Background="#696969">
+                  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="9" ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                  Background="#696969" Margin="0,0,137,0">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -70,6 +73,90 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <StackPanel Grid.ColumnSpan="11" Orientation="Horizontal"
+                    HorizontalAlignment="Center" Grid.Row="10">
+            <Button Style="{StaticResource ButtonStyle}">
+                <Image Source="../Assets/betjentmedtekst.png">
+                    <Custom:Interaction.Behaviors>
+                        <Custom1:EventTriggerBehavior EventName="PointerPressed">
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.View.Vagtside"/>
+                        </Custom1:EventTriggerBehavior>
+                    </Custom:Interaction.Behaviors>
+                </Image>
+            </Button>
+            <Button Style="{StaticResource ButtonStyle}" 
+                Grid.Column="1" Grid.Row="10">
+                <Image Source="../Assets/palette-solid.png">
+                    <Custom:Interaction.Behaviors>
+                        <Custom1:EventTriggerBehavior EventName="PointerPressed">
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.View.KunstView"/>
+                        </Custom1:EventTriggerBehavior>
+                    </Custom:Interaction.Behaviors>
+                </Image>
+            </Button>
+            <Button Style="{StaticResource ButtonStyle}" 
+                Grid.Column="2" Grid.Row="10">
+                <Image Source="../Assets/percent-solid.png">
+                    <Custom:Interaction.Behaviors>
+                        <Custom1:EventTriggerBehavior EventName="PointerPressed">
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.View.Tilbudview"/>
+                        </Custom1:EventTriggerBehavior>
+                    </Custom:Interaction.Behaviors>
+                </Image>
+            </Button>
+            <Button Style="{StaticResource ButtonStyle}" 
+                Grid.Column="3" Grid.Row="10">
+                <Image Source="../Assets/map-marked-alt-solid.png">
+                    <Custom:Interaction.Behaviors>
+                        <Custom1:EventTriggerBehavior EventName="PointerPressed">
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.View.Kort"/>
+                        </Custom1:EventTriggerBehavior>
+                    </Custom:Interaction.Behaviors>
+                </Image>
+            </Button>
+            <Button Style="{StaticResource ButtonStyle}" 
+                Grid.Column="4" Grid.Row="10">
+                <Image Source="../Assets/list-solid.png">
+                    <Custom:Interaction.Behaviors>
+                        <Custom1:EventTriggerBehavior EventName="PointerPressed">
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.View.ButikkerView"/>
+                        </Custom1:EventTriggerBehavior>
+                    </Custom:Interaction.Behaviors>
+                </Image>
+            </Button>
+            <Button Style="{StaticResource ButtonStyle}" 
+                Grid.Column="5" Grid.Row="10">
+                <Image Source="../Assets/gamepad-solid.png">
+                    <Custom:Interaction.Behaviors>
+                        <Custom1:EventTriggerBehavior EventName="PointerPressed">
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.Vendespil"/>
+                        </Custom1:EventTriggerBehavior>
+                    </Custom:Interaction.Behaviors>
+                </Image>
+            </Button>
+            <Button Style="{StaticResource ButtonStyle}" 
+                Grid.Column="6" Grid.Row="10">
+                <Image Source="../Assets/logout.png">
+                    <Custom:Interaction.Behaviors>
+                        <Custom1:EventTriggerBehavior EventName="PointerPressed">
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.MainPage"/>
+                        </Custom1:EventTriggerBehavior>
+                    </Custom:Interaction.Behaviors>
+                </Image>
+            </Button>
+
+            <Button Style="{StaticResource ButtonStyle}" 
+                Grid.Column="7" Grid.Row="10">
+                <Image Source="../Assets/HighScore.png">
+                    <Custom:Interaction.Behaviors>
+                        <Custom1:EventTriggerBehavior EventName="PointerPressed">
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.View.LocalHighscore"/>
+                        </Custom1:EventTriggerBehavior>
+                    </Custom:Interaction.Behaviors>
+                </Image>
+            </Button>
+        </StackPanel>
 
     </Grid>
 </Page>

@@ -1,39 +1,24 @@
 ﻿<Page
-    x:Class="lplplp.View.Tilbudview"
+    x:Class="lplplp.View.Vagtside"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:lplplp.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    xmlns:Custom="using:Microsoft.Xaml.Interactivity"
     xmlns:Custom1="using:Microsoft.Xaml.Interactions.Core"
-    xmlns:Model1="using:lplplp.Viewmodel"
-    Background="#333333">
-
-    <Page.DataContext>
-        <Model1:Dagugetilbud/>
-    </Page.DataContext>
+    xmlns:Custom="using:Microsoft.Xaml.Interactivity"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="41*"/>
-            <RowDefinition Height="241*"/>
-            <RowDefinition Height="19*"/>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="22*"/>
+            <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+        <Image Source="../Assets/vagtside.png" Grid.Row="0"/>
 
         <StackPanel Grid.ColumnSpan="11" Orientation="Horizontal"
-                    HorizontalAlignment="Center" Grid.Row="10">
+                    HorizontalAlignment="Center" Grid.Row="1">
             <Button Style="{StaticResource ButtonStyle}">
                 <Image Source="../Assets/betjentmedtekst.png">
                     <Custom:Interaction.Behaviors>
@@ -115,28 +100,5 @@
                 </Image>
             </Button>
         </StackPanel>
-
-        
-        <TextBlock Text="Dagens og Ugens tilbud" Foreground="White" FontSize="60" Grid.Column="1" 
-                   Grid.ColumnSpan="4" FontWeight="Bold" VerticalAlignment="Center" 
-                   HorizontalAlignment="Center" Height="80" Width="676" />
-
-        <ListView ItemsSource="{Binding Tilbudliste, Mode=TwoWay}" 
-                  SelectedItem="{Binding Valgttilbud}" Background="#696969" 
-                  Grid.ColumnSpan="6" Margin="63,4,63,3" 
-                  Grid.Row="1" Grid.Column="1">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="{Binding ProduktBillede}" Height="170" Width="200"/>
-                        <TextBlock Text="{Binding ButikNavn}"/>
-                        <TextBlock Text="{Binding ProduktNavn}"/>
-                        <TextBlock Text="{Binding Pris}" Padding="40"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-
-        </ListView>
-
     </Grid>
 </Page>

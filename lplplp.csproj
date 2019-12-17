@@ -162,6 +162,9 @@
     <Compile Include="View\Tilbudview.xaml.cs">
       <DependentUpon>Tilbudview.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Vagtside.xaml.cs">
+      <DependentUpon>Vagtside.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -281,6 +284,7 @@
     <Content Include="Assets\triumph.png" />
     <Content Include="Assets\Træroden.jpg" />
     <Content Include="Assets\TøjEksperten.jpg" />
+    <Content Include="Assets\vagtside.png" />
     <Content Include="Assets\VeroModa.png" />
     <Content Include="Assets\Vila.png" />
     <Content Include="Assets\Vivaldi.png" />
@@ -328,6 +332,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Tilbudview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Vagtside.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

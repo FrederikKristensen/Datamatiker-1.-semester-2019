@@ -6,14 +6,29 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:Model1="using:lplplp.ViewModel"
+    xmlns:Custom1="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:Custom="using:Microsoft.Xaml.Interactivity"
     Background="Black">
 
-	<Page.DataContext>
-		<Model1:HighscoreViewModel/>
-	</Page.DataContext>
+    <Page.DataContext>
+        <Model1:HighscoreViewModel/>
+    </Page.DataContext>
+    
 
-	<Grid BorderBrush="SlateGray" BorderThickness="2">
-		<StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+    <Grid BorderBrush="SlateGray" BorderThickness="2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="600"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
 			<TextBlock Text="Highscores online" Foreground="White" FontWeight="Black" FontSize="50" HorizontalAlignment="Center" Margin="0,20,0,0"/>
 		</StackPanel>
 		<StackPanel Grid.Row="1" Grid.Column="0" BorderBrush="SlateGray" BorderThickness="1">
@@ -88,18 +103,96 @@
 				<TextBlock Text="Navn" Foreground="White" FontWeight="Black" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 			</StackPanel>
 		</StackPanel>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="100"/>
-			<RowDefinition Height="100"/>
-			<RowDefinition/>
-			<RowDefinition Height="100"/>
-		</Grid.RowDefinitions>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition/>
-			<ColumnDefinition/>
-			<ColumnDefinition/>
-		</Grid.ColumnDefinitions>
-	</Grid>
 
+        <StackPanel Grid.ColumnSpan="11" Orientation="Horizontal"
+                    HorizontalAlignment="Center" Grid.Row="1">
+            <Button Style="{StaticResource ButtonStyle}">
+                <Image Source="../Assets/betjentmedtekst.png">
+                    <Custom:Interaction.Behaviors>
+                        <Custom1:EventTriggerBehavior EventName="PointerPressed">
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.View.Vagtside"/>
+                        </Custom1:EventTriggerBehavior>
+                    </Custom:Interaction.Behaviors>
+                </Image>
+            </Button>
+            <Button Style="{StaticResource ButtonStyle}" 
+                Grid.Column="1" Grid.Row="10">
+                <Image Source="../Assets/palette-solid.png">
+                    <Custom:Interaction.Behaviors>
+                        <Custom1:EventTriggerBehavior EventName="PointerPressed">
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.View.KunstView"/>
+                        </Custom1:EventTriggerBehavior>
+                    </Custom:Interaction.Behaviors>
+                </Image>
+            </Button>
+            <Button Style="{StaticResource ButtonStyle}" 
+                Grid.Column="2" Grid.Row="10">
+                <Image Source="../Assets/percent-solid.png">
+                    <Custom:Interaction.Behaviors>
+                        <Custom1:EventTriggerBehavior EventName="PointerPressed">
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.View.Tilbudview"/>
+                        </Custom1:EventTriggerBehavior>
+                    </Custom:Interaction.Behaviors>
+                </Image>
+            </Button>
+            <Button Style="{StaticResource ButtonStyle}" 
+                Grid.Column="3" Grid.Row="10">
+                <Image Source="../Assets/map-marked-alt-solid.png">
+                    <Custom:Interaction.Behaviors>
+                        <Custom1:EventTriggerBehavior EventName="PointerPressed">
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.View.Kort"/>
+                        </Custom1:EventTriggerBehavior>
+                    </Custom:Interaction.Behaviors>
+                </Image>
+            </Button>
+            <Button Style="{StaticResource ButtonStyle}" 
+                Grid.Column="4" Grid.Row="10">
+                <Image Source="../Assets/list-solid.png">
+                    <Custom:Interaction.Behaviors>
+                        <Custom1:EventTriggerBehavior EventName="PointerPressed">
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.View.ButikkerView"/>
+                        </Custom1:EventTriggerBehavior>
+                    </Custom:Interaction.Behaviors>
+                </Image>
+            </Button>
+            <Button Style="{StaticResource ButtonStyle}" 
+                Grid.Column="5" Grid.Row="10">
+                <Image Source="../Assets/gamepad-solid.png">
+                    <Custom:Interaction.Behaviors>
+                        <Custom1:EventTriggerBehavior EventName="PointerPressed">
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.Vendespil"/>
+                        </Custom1:EventTriggerBehavior>
+                    </Custom:Interaction.Behaviors>
+                </Image>
+            </Button>
+            <Button Style="{StaticResource ButtonStyle}" 
+                Grid.Column="6" Grid.Row="10">
+                <Image Source="../Assets/logout.png">
+                    <Custom:Interaction.Behaviors>
+                        <Custom1:EventTriggerBehavior EventName="PointerPressed">
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.MainPage"/>
+                        </Custom1:EventTriggerBehavior>
+                    </Custom:Interaction.Behaviors>
+                </Image>
+            </Button>
+
+            <Button Style="{StaticResource ButtonStyle}" 
+                Grid.Column="7" Grid.Row="10">
+                <Image Source="../Assets/HighScore.png">
+                    <Custom:Interaction.Behaviors>
+                        <Custom1:EventTriggerBehavior EventName="PointerPressed">
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.View.LocalHighscore"/>
+                        </Custom1:EventTriggerBehavior>
+                    </Custom:Interaction.Behaviors>
+                </Image>
+            </Button>
+        </StackPanel>
+
+
+
+
+
+    </Grid>
+	
 </Page>
 

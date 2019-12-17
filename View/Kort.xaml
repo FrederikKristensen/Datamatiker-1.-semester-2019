@@ -4,10 +4,112 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Custom1="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:Custom="using:Microsoft.Xaml.Interactivity"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Image Source="../Assets/ROsTorvKort.jpg"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="429*"/>
+            <RowDefinition Height="120"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Source="../Assets/ROsTorvKort.jpg" Grid.Column="1"
+               Grid.ColumnSpan="6"/>
+        <StackPanel Grid.ColumnSpan="11" Orientation="Horizontal"
+                    HorizontalAlignment="Center" Grid.Row="10">
+            <Button Style="{StaticResource ButtonStyle}">
+                <Image Source="../Assets/betjentmedtekst.png">
+                    <Custom:Interaction.Behaviors>
+                        <Custom1:EventTriggerBehavior EventName="PointerPressed">
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.View.Vagtside"/>
+                        </Custom1:EventTriggerBehavior>
+                    </Custom:Interaction.Behaviors>
+                </Image>
+            </Button>
+            <Button Style="{StaticResource ButtonStyle}" 
+                Grid.Column="1" Grid.Row="10">
+                <Image Source="../Assets/palette-solid.png">
+                    <Custom:Interaction.Behaviors>
+                        <Custom1:EventTriggerBehavior EventName="PointerPressed">
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.View.KunstView"/>
+                        </Custom1:EventTriggerBehavior>
+                    </Custom:Interaction.Behaviors>
+                </Image>
+            </Button>
+            <Button Style="{StaticResource ButtonStyle}" 
+                Grid.Column="2" Grid.Row="10">
+                <Image Source="../Assets/percent-solid.png">
+                    <Custom:Interaction.Behaviors>
+                        <Custom1:EventTriggerBehavior EventName="PointerPressed">
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.View.Tilbudview"/>
+                        </Custom1:EventTriggerBehavior>
+                    </Custom:Interaction.Behaviors>
+                </Image>
+            </Button>
+            <Button Style="{StaticResource ButtonStyle}" 
+                Grid.Column="3" Grid.Row="10">
+                <Image Source="../Assets/map-marked-alt-solid.png">
+                    <Custom:Interaction.Behaviors>
+                        <Custom1:EventTriggerBehavior EventName="PointerPressed">
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.View.Kort"/>
+                        </Custom1:EventTriggerBehavior>
+                    </Custom:Interaction.Behaviors>
+                </Image>
+            </Button>
+            <Button Style="{StaticResource ButtonStyle}" 
+                Grid.Column="4" Grid.Row="10">
+                <Image Source="../Assets/list-solid.png">
+                    <Custom:Interaction.Behaviors>
+                        <Custom1:EventTriggerBehavior EventName="PointerPressed">
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.View.ButikkerView"/>
+                        </Custom1:EventTriggerBehavior>
+                    </Custom:Interaction.Behaviors>
+                </Image>
+            </Button>
+            <Button Style="{StaticResource ButtonStyle}" 
+                Grid.Column="5" Grid.Row="10">
+                <Image Source="../Assets/gamepad-solid.png">
+                    <Custom:Interaction.Behaviors>
+                        <Custom1:EventTriggerBehavior EventName="PointerPressed">
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.Vendespil"/>
+                        </Custom1:EventTriggerBehavior>
+                    </Custom:Interaction.Behaviors>
+                </Image>
+            </Button>
+            <Button Style="{StaticResource ButtonStyle}" 
+                Grid.Column="6" Grid.Row="10">
+                <Image Source="../Assets/logout.png">
+                    <Custom:Interaction.Behaviors>
+                        <Custom1:EventTriggerBehavior EventName="PointerPressed">
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.MainPage"/>
+                        </Custom1:EventTriggerBehavior>
+                    </Custom:Interaction.Behaviors>
+                </Image>
+            </Button>
+
+            <Button Style="{StaticResource ButtonStyle}" 
+                Grid.Column="7" Grid.Row="10">
+                <Image Source="../Assets/HighScore.png">
+                    <Custom:Interaction.Behaviors>
+                        <Custom1:EventTriggerBehavior EventName="PointerPressed">
+                            <Custom1:NavigateToPageAction TargetPage="lplplp.View.LocalHighscore"/>
+                        </Custom1:EventTriggerBehavior>
+                    </Custom:Interaction.Behaviors>
+                </Image>
+            </Button>
+        </StackPanel>
+
     </Grid>
 </Page>
