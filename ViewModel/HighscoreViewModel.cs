@@ -40,7 +40,7 @@ namespace lplplp.ViewModel
          set { sortedHighScores = value; }
       }
 
-      public void HentUsers()
+      private void HentUsers()
       {
          foreach (User user in Shared.Users)
          {
