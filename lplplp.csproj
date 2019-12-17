@@ -132,11 +132,13 @@
     <Compile Include="Models\Butik.cs" />
     <Compile Include="Models\Highscore.cs" />
     <Compile Include="Models\Kunst.cs" />
+    <Compile Include="Models\Tilbud.cs" />
     <Compile Include="Vendespil.xaml.cs">
       <DependentUpon>Vendespil.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\BrikCollection.cs" />
     <Compile Include="ViewModel\ButikkerViewModel.cs" />
+    <Compile Include="ViewModel\Dagugetilbud.cs" />
     <Compile Include="ViewModel\HighscoreViewModel.cs" />
     <Compile Include="ViewModel\KunstværkerViewModel.cs" />
     <Compile Include="ViewModel\MainViewModelLogin.cs" />
@@ -156,6 +158,9 @@
     </Compile>
     <Compile Include="View\LocalHighscore.xaml.cs">
       <DependentUpon>LocalHighscore.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tilbudview.xaml.cs">
+      <DependentUpon>Tilbudview.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -186,12 +191,14 @@
     <Content Include="Assets\Busck.png" />
     <Content Include="Assets\ByMo.png" />
     <Content Include="Assets\Børne.png" />
+    <Content Include="Assets\Chocolate_Chip_Cookies_-_kimberlykv.jpg" />
     <Content Include="Assets\Companys.jfif" />
     <Content Include="Assets\CopenhagenLuxe.png" />
     <Content Include="Assets\DanskeLægers.png" />
     <Content Include="Assets\Deichmann.jfif" />
     <Content Include="Assets\DeSkønnePorte.jpg" />
     <Content Include="Assets\Dlet.png" />
+    <Content Include="Assets\download.jpg" />
     <Content Include="Assets\EspressoHouse.jfif" />
     <Content Include="Assets\fb.png" />
     <Content Include="Assets\Flammen.png" />
@@ -245,6 +252,7 @@
     <Content Include="Assets\Post.png" />
     <Content Include="Assets\ProfilOptik.jfif" />
     <Content Include="Assets\Queens.png" />
+    <Content Include="Assets\relaxing-cat.jpg" />
     <Content Include="Assets\Rituals.jfif" />
     <Content Include="Assets\rooostorv.jpg" />
     <Content Include="Assets\RoskildeVin.png" />
@@ -316,6 +324,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\LocalHighscore.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tilbudview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

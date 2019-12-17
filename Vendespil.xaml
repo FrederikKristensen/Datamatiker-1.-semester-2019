@@ -168,7 +168,7 @@
 				<Image Source="../Assets/percent-solid.png">
 					<Custom:Interaction.Behaviors>
 						<Custom1:EventTriggerBehavior EventName="PointerPressed">
-							<Custom1:NavigateToPageAction TargetPage=""/>
+							<Custom1:NavigateToPageAction TargetPage="lplplp.View.Tilbudview"/>
 						</Custom1:EventTriggerBehavior>
 					</Custom:Interaction.Behaviors>
 				</Image>
