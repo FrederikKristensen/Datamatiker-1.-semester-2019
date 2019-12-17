@@ -8,7 +8,7 @@
     xmlns:Custom="using:Microsoft.Xaml.Interactivity"
     xmlns:Custom1="using:Microsoft.Xaml.Interactions.Core"
     xmlns:Model1="using:lplplp.Viewmodel"
-    Background="LightBlue">
+    Background="#333333">
 
     <Page.DataContext>
         <Model1:Dagugetilbud/>
@@ -17,7 +17,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="118*"/>
-            <RowDefinition Height="806*"/>
+            <RowDefinition Height="713*"/>
+            <RowDefinition Height="94*"/>
             <RowDefinition Height="75*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -29,7 +30,7 @@
             <ColumnDefinition Width="250*"/>
         </Grid.ColumnDefinitions>
 
-        <Button Foreground="Black" HorizontalAlignment="Center" Width="255" Grid.Row="2">
+        <Button Foreground="Black" HorizontalAlignment="Center" Width="255" Grid.Row="3">
             <Image Source="../Assets/betjentmedtekst.png">
                 <Custom:Interaction.Behaviors>
                     <Custom1:EventTriggerBehavior EventName="PointerPressed">
@@ -38,7 +39,7 @@
                 </Custom:Interaction.Behaviors>
             </Image>
         </Button>
-        <Button Foreground="Black" HorizontalAlignment="Center" Width="255" Grid.Column="1" Grid.Row="2">
+        <Button Foreground="Black" HorizontalAlignment="Center" Width="255" Grid.Column="1" Grid.Row="3">
             <Image Source="../Assets/palette-solid.png">
                 <Custom:Interaction.Behaviors>
                     <Custom1:EventTriggerBehavior EventName="PointerPressed">
@@ -47,7 +48,7 @@
                 </Custom:Interaction.Behaviors>
             </Image>
         </Button>
-        <Button Foreground="Black" HorizontalAlignment="Center" Width="255" Grid.Column="2" Grid.Row="2">
+        <Button Foreground="Black" HorizontalAlignment="Center" Width="255" Grid.Column="2" Grid.Row="3">
             <Image Source="../Assets/percent-solid.png">
                 <Custom:Interaction.Behaviors>
                     <Custom1:EventTriggerBehavior EventName="PointerPressed">
@@ -56,7 +57,7 @@
                 </Custom:Interaction.Behaviors>
             </Image>
         </Button>
-        <Button Foreground="Black" HorizontalAlignment="Center" Width="255" Grid.Column="3" Grid.Row="2">
+        <Button Foreground="Black" HorizontalAlignment="Center" Width="255" Grid.Column="3" Grid.Row="3">
             <Image Source="../Assets/map-marked-alt-solid.png">
                 <Custom:Interaction.Behaviors>
                     <Custom1:EventTriggerBehavior EventName="PointerPressed">
@@ -65,7 +66,7 @@
                 </Custom:Interaction.Behaviors>
             </Image>
         </Button>
-        <Button Foreground="Black" HorizontalAlignment="Center" Width="255" Grid.Column="4" Grid.Row="2">
+        <Button Foreground="Black" HorizontalAlignment="Center" Width="255" Grid.Column="4" Grid.Row="3">
             <Image Source="../Assets/list-solid.png">
                 <Custom:Interaction.Behaviors>
                     <Custom1:EventTriggerBehavior EventName="PointerPressed">
@@ -74,7 +75,7 @@
                 </Custom:Interaction.Behaviors>
             </Image>
         </Button>
-        <Button Foreground="Black" HorizontalAlignment="Center" Width="255" Grid.Column="5" Grid.Row="2">
+        <Button Foreground="Black" HorizontalAlignment="Center" Width="255" Grid.Column="5" Grid.Row="3">
             <Image Source="../Assets/gamepad-solid.png">
 
                 <Custom:Interaction.Behaviors>
@@ -87,14 +88,15 @@
         </Button>
 
 
-        <TextBlock Text="Dagens og Ugens tilbud" Foreground="Black" FontSize="60" Grid.Column="1" 
+        <TextBlock Text="Dagens og Ugens tilbud" Foreground="White" FontSize="60" Grid.Column="1" 
                    Grid.ColumnSpan="4" FontWeight="Bold" VerticalAlignment="Center" 
                    HorizontalAlignment="Center" />
 
         <ListView ItemsSource="{Binding Tilbudliste, Mode=TwoWay}" 
                   SelectedItem="{Binding Valgttilbud, Mode=TwoWay}"
-                   Grid.Row="1" Background="Black"
-                  Grid.Column="1" Grid.ColumnSpan="4">
+                  Grid.Row="1" Background="#696969" 
+                  Grid.ColumnSpan="5" Margin="250,0,0,75" 
+                  Grid.RowSpan="2">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">

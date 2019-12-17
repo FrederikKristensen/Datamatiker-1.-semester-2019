@@ -7,14 +7,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Model="using:lplplp.ViewModel"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background= "#696969">
 
     <Page.DataContext>
         <Model:KunstværkerViewModel/>
     </Page.DataContext>
 
 
-    <Grid Background="AntiqueWhite">
+    <Grid Background="#333333">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -45,7 +45,7 @@
             <Image Source="{Binding ValgtKunstværket.Billede, Mode=TwoWay}" Height="250"/>
         </StackPanel>
 
-        <StackPanel Grid.Column="5" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="8" Background="White">
+        <StackPanel Background="#696969" Grid.Column="5" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="8">
             <TextBlock Text="{Binding ValgtKunstværket.Tittel}" FontSize="25"/>
             <TextBlock Text="Kunstner:"/>
             <TextBlock Text="{Binding ValgtKunstværket.Kunstner}"/>
@@ -60,7 +60,7 @@
 
         <ListView ItemsSource="{Binding Kunstværkerne, Mode=TwoWay}" SelectedItem="{Binding ValgtKunstværket, Mode=TwoWay}" 
                   Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="8" ScrollViewer.VerticalScrollBarVisibility="Visible" 
-                  Background="White">
+                  Background="#696969">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
