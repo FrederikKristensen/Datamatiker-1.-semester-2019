@@ -13,7 +13,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="22*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <Image Source="../Assets/vagtside.png" Grid.Row="0"/>
 

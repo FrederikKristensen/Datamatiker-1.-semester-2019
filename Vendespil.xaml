@@ -131,7 +131,7 @@
 				Grid.ColumnSpan="2">
 			<Grid.RowDefinitions>
 				<!--<RowDefinition Height="{Binding Shared.MenuHeight}"/>-->
-				<RowDefinition Height="80"/>
+				<RowDefinition Height="100"/>
 				<!--<RowDefinition Height="3*"/>-->
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
