@@ -46,8 +46,8 @@
 						 SelectedItem="{Binding SelectedBrik, Mode=TwoWay}">
 				<GridView.ItemTemplate>
 					<DataTemplate>
-						<StackPanel Height="200"
-										Width="200">
+						<StackPanel Height="150"
+										Width="150">
 							<Image Source="{Binding ImageSourceCurrent, Mode=TwoWay}"
 									 Margin="15">
 							</Image>

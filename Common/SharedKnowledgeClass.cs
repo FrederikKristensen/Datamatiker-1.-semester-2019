@@ -35,7 +35,7 @@ namespace lplplp.Common
 
 				Users = new List<User>();
 				_users.Add(new User(Username: "Rasmus", Password: "1234", 22));
-				_users.Add(new User(Username: "M", Password: "1", 4));
+				_users.Add(new User(Username: "Michael", Password: "1234", 8));
 				_users.Add(new User(Username: "Ask", Password: "1234", 14));
 				_users.Add(new User(Username: "Michelle", Password: "1234", 13));
 				_users.Add(new User(Username: "Frederik", Password: "1234", 10));
