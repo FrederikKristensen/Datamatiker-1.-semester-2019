@@ -48,17 +48,19 @@
             <Image Source="{Binding ValgtKunstværket.Billede, Mode=TwoWay}" Height="250"/>
         </StackPanel>
 
-        <StackPanel Background="#696969" Grid.Column="5" Grid.ColumnSpan="4" Grid.Row="1" Grid.RowSpan="8" Margin="0,0,135,0">
+        <ScrollViewer Background="#696969" Grid.Column="5" Grid.ColumnSpan="4" Grid.Row="1" Grid.RowSpan="8" Margin="0,0,135,0">
+        <StackPanel>
             <TextBlock Text="{Binding ValgtKunstværket.Tittel}" FontSize="25"/>
-            <TextBlock Text="Kunstner:"/>
+            <TextBlock Style="{StaticResource TextBlockStyle3}" Text="Kunstner:"/>
             <TextBlock Text="{Binding ValgtKunstværket.Kunstner}"/>
-            <TextBlock Text="Om Kunstneren"/>
+            <TextBlock Style="{StaticResource TextBlockStyle3}" Text="Om Kunstneren"/>
             <TextBlock Text="{Binding ValgtKunstværket.OmKunstner}" TextWrapping="Wrap"/>
-            <TextBlock Text="Placering"/>
+            <TextBlock Style="{StaticResource TextBlockStyle3}" Text="Placering"/>
             <TextBlock Text="{Binding ValgtKunstværket.Placering}"/>
-            <TextBlock Text="Beskrivelse"/>
+            <TextBlock Style="{StaticResource TextBlockStyle3}" Text="Beskrivelse"/>
             <TextBlock Text="{Binding ValgtKunstværket.Beskrivelse}" TextWrapping="Wrap" />
         </StackPanel>
+        </ScrollViewer>
 
 
         <ListView ItemsSource="{Binding Kunstværkerne, Mode=TwoWay}" SelectedItem="{Binding ValgtKunstværket, Mode=TwoWay}" 

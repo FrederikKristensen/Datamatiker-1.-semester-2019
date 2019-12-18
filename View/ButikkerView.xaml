@@ -42,30 +42,31 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Margin="0,100,50,0" Grid.Column="5" Grid.ColumnSpan="3" Grid.RowSpan="7" Background="#696969">
-            <Image Source="{Binding ValgtButik.Logo}" Height="150" Width="150"/>
-            <TextBlock Text="Butikkens navn"/>
-            <TextBlock Text="{Binding ValgtButik.Navn}"/>
-            <TextBlock Text="Butik Nummer"/>
-            <TextBlock Text="{Binding ValgtButik.Nummer}"/>
-            <TextBlock Text="Åbningstider Hverdag"/>
-            <TextBlock Text="{Binding ValgtButik.ÅbningstiderH}"/>
-            <TextBlock Text="Åbningstider Weekend"/>
-            <TextBlock Text="{Binding ValgtButik.ÅbningstiderW, Mode=TwoWay}"/>
-            <TextBlock Text="Åbningstider Søndag"/>
-            <TextBlock Text="{Binding ValgtButik.ÅbningstiderS, Mode=TwoWay}"/>
-            <TextBlock Text="Telefon nummer"/>
-            <TextBlock Text="{Binding ValgtButik.Telefon, Mode=TwoWay}"/>
-            <TextBlock Text="website"/>
-            <TextBlock Text="{Binding ValgtButik.Website, Mode=TwoWay}"/>
-            <TextBlock Text="Facebook"/>
-            <TextBlock Text="{Binding ValgtButik.Facebook, Mode=TwoWay}"/>
-            <TextBlock Text="Instagram"/>
-            <TextBlock Text="{Binding ValgtButik.Instagram}"/>
-            <TextBlock Text="Youtube"/>
-            <TextBlock Text="{Binding ValgtButik.Youtube}"/>
-        </StackPanel>
-
+        <ScrollViewer Margin="0,100,50,0" Grid.Column="5" Grid.ColumnSpan="3" Grid.RowSpan="8" Background="#696969">
+            <StackPanel >
+                <Image Source="{Binding ValgtButik.Logo}" Height="150" Width="150"/>
+                <TextBlock Style="{StaticResource TextBlockStyle3}" Text="Butikkens navn"/>
+                <TextBlock Text="{Binding ValgtButik.Navn}"/>
+                <TextBlock Style="{StaticResource TextBlockStyle3}" Text="Butik Nummer"/>
+                <TextBlock Text="{Binding ValgtButik.Nummer}"/>
+                <TextBlock Style="{StaticResource TextBlockStyle3}" Text="Åbningstider Hverdag"/>
+                <TextBlock Text="{Binding ValgtButik.ÅbningstiderH}"/>
+                <TextBlock Style="{StaticResource TextBlockStyle3}" Text="Åbningstider Weekend"/>
+                <TextBlock Text="{Binding ValgtButik.ÅbningstiderW, Mode=TwoWay}"/>
+                <TextBlock Style="{StaticResource TextBlockStyle3}" Text="Åbningstider Søndag"/>
+                <TextBlock Text="{Binding ValgtButik.ÅbningstiderS, Mode=TwoWay}"/>
+                <TextBlock Style="{StaticResource TextBlockStyle3}" Text="Telefon nummer"/>
+                <TextBlock Text="{Binding ValgtButik.Telefon, Mode=TwoWay}"/>
+                <TextBlock Style="{StaticResource TextBlockStyle3}" Text="website"/>
+                <TextBlock Text="{Binding ValgtButik.Website, Mode=TwoWay}"/>
+                <TextBlock Style="{StaticResource TextBlockStyle3}" Text="Facebook"/>
+                <TextBlock Text="{Binding ValgtButik.Facebook, Mode=TwoWay}"/>
+                <TextBlock Style="{StaticResource TextBlockStyle3}" Text="Instagram"/>
+                <TextBlock Text="{Binding ValgtButik.Instagram}"/>
+                <TextBlock Style="{StaticResource TextBlockStyle3}" Text="Youtube"/>
+                <TextBlock Text="{Binding ValgtButik.Youtube}"/>
+            </StackPanel>
+        </ScrollViewer>
 
         <ListView Margin="0,100,50,0" Grid.ColumnSpan="3" Grid.RowSpan="8" 
                   Grid.Column="2" ItemsSource="{Binding Butikker}" SelectedItem="{Binding ValgtButik, Mode=TwoWay}" 
