@@ -49,7 +49,7 @@ namespace lplplp.ViewModel
                     Shared.PassNow = "";
 
                     Frame login = (Frame)Window.Current.Content;
-                    login.Navigate(typeof(lplplp.Vendespil));
+                    login.Navigate(typeof(lplplp.View.Kort));
                     // LoginSuccess = "lplplp.Kort";
                     LoginPopUp();
                 }
