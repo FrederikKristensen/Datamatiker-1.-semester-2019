@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Vendespil_0._1;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace lplplp.ViewModel
 {
@@ -205,7 +207,6 @@ namespace lplplp.ViewModel
 			Image1 = new Brik();
 			Image2 = new Brik();
 			NumberOfBriksTurned = 0;
-			//Næste = false;
 				}
 			}
 			SelectedBrik = new Brik();
@@ -217,6 +218,8 @@ namespace lplplp.ViewModel
 			{
 				Shared.UpdateHighScore(UserScore);
 				UserScore = 0;
+				Frame login = (Frame)Window.Current.Content;
+				login.Navigate(typeof(lplplp.View.LocalHighscore));
 			}
 		}
 
@@ -224,7 +227,6 @@ namespace lplplp.ViewModel
 		{
 			brik.ImageSourceCurrent = newImage;
 			brik.IsFaceDown = !brik.IsFaceDown;
-			//OnPropertyChanged();
 		}
 		#endregion
 
